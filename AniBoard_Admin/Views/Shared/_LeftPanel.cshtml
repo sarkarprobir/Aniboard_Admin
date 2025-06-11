@@ -1,0 +1,144 @@
+﻿<ul>
+    <li>
+        <span class="logo">LOGO</span>
+        <!-- <button onclick="toggleSidebar()" id="toggle-btn">
+           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+             <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
+           </svg>-->
+        </button>
+    </li>
+
+    <li>
+        <a href="dashboard.html">
+
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <button onclick="toggleSubMenu(this)" class="dropdown-btn">
+
+            <span>User Activity</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+            </svg>
+        </button>
+        <ul class="sub-menu">
+            <div>
+            <li><a href="#">Category 1</a></li>
+            <li><a href="#">Category 2</a></li>
+            <li><a href="#">Category 3</a></li>
+            </div>
+        </ul>
+    </li>
+    <li>
+        <button onclick="toggleSubMenu(this)" class="dropdown-btn">
+
+            <span>Menu Design</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+            </svg>
+        </button>
+        <ul class="sub-menu">
+            <div>
+            <li><a href="#">Menu Design 1</a></li>
+            <li><a href="#">Menu Design 2</a></li>
+            <li><a href="#">Menu Design 3</a></li>
+            <li><a href="#">Menu Design 4</a></li>
+            <li><a href="#">Menu Design 5</a></li>
+            </div>
+        </ul>
+    </li>
+
+    <li>
+        <a target="_blank" href="component.html">
+
+            <span>component</span>
+        </a>
+    </li>
+    <li>
+        <a href="blank-page.html">
+
+            <span>Black page</span>
+        </a>
+    </li>
+</ul>
+
+<script id="rendered-js">
+    const toggleButton = document.getElementById("toggle-btn");
+    const sidebar = document.getElementById("sidebar");
+
+    function toggleSidebar() {
+        sidebar.classList.toggle("close");
+        toggleButton.classList.toggle("rotate");
+
+        closeAllSubMenus();
+    }
+
+    function toggleSubMenu(button) {
+        if (!button.nextElementSibling.classList.contains("show")) {
+            closeAllSubMenus();
+        }
+
+        button.nextElementSibling.classList.toggle("show");
+        button.classList.toggle("rotate");
+
+        if (sidebar.classList.contains("close")) {
+            sidebar.classList.toggle("close");
+            toggleButton.classList.toggle("rotate");
+        }
+    }
+
+    function closeAllSubMenus() {
+        Array.from(sidebar.getElementsByClassName("show")).forEach(ul => {
+            ul.classList.remove("show");
+            ul.previousElementSibling.classList.remove("rotate");
+        });
+    }
+    //# sourceURL=pen.js
+</script>
+
+<script>
+    // Handle submenu toggle and active state for main menu
+    function toggleSubMenu(button) {
+        const parentLi = button.closest('li');
+        const subMenu = parentLi.querySelector('.sub-menu');
+
+        // Toggle show class
+        subMenu?.classList.toggle('show');
+
+        // Toggle active class on parent <li>
+        parentLi.classList.toggle('active');
+    }
+
+    // Set active state on click for all links
+    document.addEventListener("DOMContentLoaded", () => {
+        // Main links
+        document.querySelectorAll('#sidebar > ul > li > a').forEach(link => {
+            link.addEventListener('click', function () {
+                clearActiveStates();
+                this.parentElement.classList.add('active');
+            });
+        });
+
+        // Submenu links
+        document.querySelectorAll('.sub-menu li a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.stopPropagation(); // prevent submenu closing
+                clearActiveStates();
+
+                // Activate submenu item
+                this.parentElement.classList.add('active');
+
+                // Also activate the parent <li> of the dropdown
+                const parentLi = this.closest('li').closest('.sub-menu').closest('li');
+                parentLi.classList.add('active');
+                parentLi.querySelector('.sub-menu').classList.add('show');
+            });
+        });
+
+        function clearActiveStates() {
+            document.querySelectorAll('#sidebar li').forEach(li => li.classList.remove('active'));
+            document.querySelectorAll('.sub-menu').forEach(ul => ul.classList.remove('show'));
+        }
+    });
+</script>
