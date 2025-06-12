@@ -2,12 +2,48 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<main>
+
     <header class="dashboard-head">
-        <h1>Dashboard</h1>
-    </header>
-    <div class="container">
+
+    <div class="header-left"><h1>Super Admin</h1></div>
+
+    <div class="right-login">
+        <span href="#" class="button toggle-login">
+            <img src="Images/icon-log.png" alt="icon-log">
+        </span><!-- .button .toggle-login -->
+
+        <div class="login">
+            <div class="triangle"></div><!-- .triangle -->
+            
+            <ul>
+                <li><a href="javascript:void(0)"> <img src="Images/icon_sign_out.png" alt="icon-log">  Sign out</a> </li>
+
+            </ul>
+           
+        </div><!--  .login -->
+    </div><!-- .right -->
+    <div class="clear"></div>
+</header>
+ 
+  
+    <div class="container" style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+              
         <h2 class="title">User Uploaded Images </h2>
+            </div>
+        </div> 
+
+
+        <div class="row">
+             <div class="col-md-12 ">
+            <div class=" topcontent-box">
+
+                 top content
+            </div>
+                </div>
+            <div class="col-md-12">
+              
         <table class="table-style" cellspacing="0" cellpadding="15">
             <thead>
                 <tr>
@@ -79,25 +115,43 @@
 
             </tbody>
         </table>
-
-
-
-    </div>
-
-    <div class="container">
+        </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                  
         <div class="b-pagination-outer">
             <ul id="border-pagination">
-                <li><a class="" href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#" class="active">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">»</a></li>
+                    <li><a class="" href="javascript:void(0)">«</a></li>
+                    <li><a href="javascript:void(0)">1</a></li>
+                    <li><a href="javascript:void(0)" class="active">2</a></li>
+                    <li><a href="javascript:void(0)">3</a></li>
+                    <li><a href="javascript:void(0)">4</a></li>
+                    <li><a href="javascript:void(0)">5</a></li>
+                    <li><a href="javascript:void(0)">6</a></li>
+                    <li><a href="javascript:void(0)">7</a></li>
+                    <li><a href="javascript:void(0)">»</a></li>
             </ul>
-        </div>
-    </div>
+                    </div>
+                </div>
 
-</main>
+            </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $('.toggle-login').click(function () {
+      $('.login').toggle();
+    });
+
+    $(document).mouseup(function (e) {
+      var container = $(".login");
+      if (!container.is(e.target) &&
+      container.has(e.target).length == 0)
+      {
+        container.fadeOut();
+      }
+    });
+    //# sourceURL=pen.js
+</script>
+
+ 

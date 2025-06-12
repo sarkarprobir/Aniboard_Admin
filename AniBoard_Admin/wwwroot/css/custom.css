@@ -12,16 +12,11 @@
   margin: 0;
   padding: 0;
 }
-html {
-  font-family: Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5rem;
-}
+ 
 body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  background-color:#fff ;
-  display: grid;
-  grid-template-columns: auto 1fr;
+    background-color: #f9f9f9;
+    padding: 0px;
+    margin: 0px;
 }
 #sidebar {
   box-sizing: border-box;
@@ -99,12 +94,16 @@ body {
   }
 }
 #sidebar .sub-menu.show {
-  grid-template-rows: 1fr;
-  padding:0; background:#383145;
+    grid-template-rows: 1fr;
+    padding: 0;
+    background: #2a2b4d;
 }
-.dropdown-btn svg {
-  transition: 200ms ease;
-}
+
+ 
+
+    .dropdown-btn svg {
+        transition: 200ms ease;
+    }
 .rotate svg:last-child {
   rotate: 180deg;
 }
@@ -126,102 +125,35 @@ body {
 #toggle-btn:hover {
   background-color: var(--hover-clr);
 }
-main {
-  padding: min(30px, 0%);
-}
-main p {
-  color: var(--secondary-text-clr);
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
+ 
 .container {
  
-  margin-bottom: 20px;
   padding:0 15px;
   width:100%;        max-width: 100%;
   
 }
-@media (max-width: 800px) {
-  body {
-    grid-template-columns: 1fr;
-  }
-  main {
-    padding: 2em 1em 60px 1em;
-  }
-  .container {
-    border: none;
-    padding: 0;
-  }
-  #sidebar {
-    height: 60px;
-    width: 100%;
-    border-right: none;
-    border-top: 1px solid var(--line-clr);
-    padding: 0;
-    position: fixed;
-    top: unset;
-    bottom: 0;
-    > ul {
-      padding: 0;
-      display: grid;
-      grid-auto-columns: 60px;
-      grid-auto-flow: column;
-      align-items: center;
-      overflow-x: scroll;
-    }
-    ul li {
-      height: 100%;
-    }
-    ul a,
-    ul .dropdown-btn {
-      width: 60px;
-      height: 60px;
-      padding: 0;
-      border-radius: 0;
-      justify-content: center;
-    }
-    ul li span,
-    ul li:first-child,
-    .dropdown-btn svg:last-child {
-      display: none;
-    }
-    ul li .sub-menu.show {
-      position: fixed;
-      bottom: 60px;
-      left: 0;
-      box-sizing: border-box;
-      height: 60px;
-      width: 100%;
-      background-color: var(--hover-clr);
-      border-top: 1px solid var(--line-clr);
-      display: flex;
-      justify-content: center;
-      > div {
-        overflow-x: auto;
-      }
-      li {
-        display: inline-flex;
-      }
-      a {
-        box-sizing: border-box;
-        padding: 1em;
-        width: auto;
-        justify-content: center;
-      }
-    }
-  }
+
+
+.dashboard-head {
+    padding: 0px 21px 0px 30px;
+    background: #f5f5f5;
+    margin: 0px -20px 25px -20px;
+    display: block;
 }
 
-.dashboard-head{    padding: 20px 30px;
-    background: #f9f9f9;margin: 0 -20px;
-   }
-	
-	.dashboard-head h1{ color: #000;
-    font-weight: 600; font-size:20px;
-		
-	}
-	
- .table-style{width:100%}
+    .dashboard-head h1 {
+        color: #000;
+        font-weight: 600;
+        font-size: 20px;
+        float: left;
+        padding: 14px 0px;
+        margin: 0 0 2px 0px;
+    }
+  
+
+    .table-style {
+        width: 100%
+    }
 	
 	.table-style tr th{ background:#11121a; color:#fff; font-weight:normal; font-size:14px; font-weight:500; padding:10px; text-align:left;}
 	.table-style tr td{padding:10px; border-bottom:1px solid #ddd; font-size:14px; }
@@ -231,8 +163,15 @@ main p {
 .table-style tr:nth-child(odd) {background: #FFF}
 .table-style tr:nth-child(even):hover {background: #f7f7f7}
 .table-style tr:nth-child(odd):hover {background: #f7f7f7}
-.table-style .thump-img img{width:40px;}
-.table-style {background: #f7f7f7; padding: 8px;}
+        .table-style .thump-img img {
+            width: 40px;
+            border-radius: 6px;
+        }
+.table-style {
+    background: #f7f7f7;
+    padding: 8px;
+    border: 10px solid #ffffff;
+}
 h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}	
 .logo{width:100%; text-align:left;}	
 #sidebar ul li.active > a,
@@ -292,7 +231,7 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
   display: flex
 }
 #border-pagination {
-  margin: 0 auto;
+  margin: 15px  auto;
   padding: 0;
   text-align: center
 }
@@ -672,4 +611,101 @@ select::-ms-expand {
     outline: 0px auto -webkit-focus-ring-color;
 }
 
-main{overflow-x:hidden;    padding:0 20px; width:auto;}
+main{overflow-x:hidden;    padding:0 20px; width:100%;}
+
+
+.container {
+  
+    padding: 0;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+  
+    min-height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+}
+    #sidebar ul {padding:0px; margin:0px;;
+    }
+    /* Main content */
+
+.wrapper {display:flex;
+}
+
+.topcontent-box {
+/*    background: #f7f7f7;*/
+    padding: 15px;
+    margin-bottom: 15px;
+    border:1px solid #ddd
+}
+
+
+
+
+/**/
+
+.dashboard-head .right-login {
+    float: right
+}
+
+    .dashboard-head .right-login .login img {
+        width: 15px;
+        margin-right: 10px;
+    }
+
+    .dashboard-head .right-login .button {
+       
+        cursor: pointer;
+        float: right;
+        padding: 12px 0px;
+        text-align: center;
+        transition: background .3s;
+        width: auto;
+        -webkit-transition: background .3s;
+    }
+        .dashboard-head .right-login .button img {
+            width: 26px;
+        }
+        .dashboard-head .right-login .login {
+    display: none;
+    margin-bottom: 2%;
+    margin-top: 42px;
+    position: absolute;
+    right: 9px;
+    width: 160px;
+}
+
+    .dashboard-head .right-login .triangle {
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+        border-left: 10px solid transparent;
+        margin-left: 127px;
+        width: 0;
+       
+    }
+    .dashboard-head .right-login ul li {
+        list-style-type: none;
+        line-height: 16px;
+        font-size: 14px;
+        padding: 10px;
+    }
+    .dashboard-head .right-login ul {
+        box-shadow: rgb(99 99 99 / 8%) 0px 2px 8px 0px;
+        padding: 0px;
+        background: #ffffff;
+       
+        border-radius: 4px 0px 4px 4px;
+    }
+        .dashboard-head .right-login ul li a:hover {
+          
+            color: #4c4e9a;
+           
+        }
+        .dashboard-head .right-login ul li a {text-decoration:none; color:#000; display:block;
+        }
+
+.clear {clear:both
+}
+ 
