@@ -154,8 +154,16 @@ body {
     .table-style {
         width: 100%
     }
-	
-	.table-style tr th{ background:#11121a; color:#fff; font-weight:normal; font-size:14px; font-weight:500; padding:10px; text-align:left;}
+
+        .table-style tr th {
+            background: #2a2b4d;
+            color: #fff;
+            font-weight: normal;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px;
+            text-align: left;
+        }
 	.table-style tr td{padding:10px; border-bottom:1px solid #ddd; font-size:14px; }
 	
  .table-style tbody tr {border-bottom:1px solid #ddd; }
@@ -652,7 +660,7 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
 
     .dashboard-head .right-login .login img {
         width: 15px;
-        margin-right: 10px;
+        margin : 0px 10px 0px 0px;
     }
 
     .dashboard-head .right-login .button {
