@@ -1,18 +1,17 @@
 ﻿<ul>
     <li>
-        <span class="logo">  <img src="/Images/logo-aniboard-white.png" alt="icon-log" style="width:80%"></span>
+        <span class="logo">  <img src="/Images/logo-aniboard-white.png" alt="icon-log"  ></span>
         <!-- <button onclick="toggleSidebar()" id="toggle-btn">
            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
              <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
-           </svg>-->
-        </button>
+           </svg>
+        </button>-->
     </li>
 
     <li>
-        <a href="dashboard.html">
-
-            <span>Dashboard</span>
-        </a>
+        <button class="dropdown-btn blanklik">
+            Dashboard 
+        </button>
     </li>
     <li>
         <button onclick="toggleSubMenu(this)" class="dropdown-btn">
@@ -76,7 +75,27 @@
         </a>
     </li> *@
 </ul>
+<header class="dashboard-head"> 
 
+    <div class="right-login">
+        <span href="#" class="button toggle-login">
+            <img src="/Images/icon-log.png" alt="icon-log">
+        </span><!-- .button .toggle-login -->
+
+        <div class="login">
+            <div class="triangle"></div><!-- .triangle -->
+
+            <ul>
+                <li><a href="/Home/Logout"> <img src="/Images/icon_sign_out.png" alt="icon-log">  Sign out</a> </li>
+                <div class="clear"></div>
+            </ul>
+
+        </div><!--  .login -->
+    </div><!-- .right -->
+    <div class="clear"></div>
+</header>
+<div style="clear:both;"></div>
+@* 
 <script id="rendered-js">
     const toggleButton = document.getElementById("toggle-btn");
     const sidebar = document.getElementById("sidebar");
@@ -109,50 +128,66 @@
         });
     }
     //# sourceURL=pen.js
-</script>
-
+</script> *@
 <script>
-    // Handle submenu toggle and active state for main menu
+    // Toggle submenu and close others
     function toggleSubMenu(button) {
-        const parentLi = button.closest('li');
-        const subMenu = parentLi.querySelector('.sub-menu');
+      const parentLi = button.closest('li');
+      const subMenu = parentLi.querySelector('.sub-menu');
 
-        // Toggle show class
-        subMenu?.classList.toggle('show');
+      // Close all other submenus
+      document.querySelectorAll('#sidebar li').forEach(li => {
+        if (li !== parentLi) {
+          li.classList.remove('active');
+          const otherSubMenu = li.querySelector('.sub-menu');
+          if (otherSubMenu) {
+            otherSubMenu.classList.remove('show');
+          }
+        }
+      });
 
-        // Toggle active class on parent <li>
-        parentLi.classList.toggle('active');
+      // Toggle current submenu
+      subMenu?.classList.toggle('show');
+      parentLi.classList.toggle('active');
     }
 
-    // Set active state on click for all links
+    // Set active state and handle clicks
     document.addEventListener("DOMContentLoaded", () => {
-        // Main links
-        document.querySelectorAll('#sidebar > ul > li > a').forEach(link => {
-            link.addEventListener('click', function () {
-                clearActiveStates();
-                this.parentElement.classList.add('active');
-            });
+      const sidebar = document.getElementById('sidebar');
+
+      // Main links
+      document.querySelectorAll('#sidebar > ul > li > a').forEach(link => {
+        link.addEventListener('click', function () {
+          // Handled by toggleSubMenu
         });
+      });
 
-        // Submenu links
-        document.querySelectorAll('.sub-menu li a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.stopPropagation(); // prevent submenu closing
-                clearActiveStates();
+      // Submenu links
+      document.querySelectorAll('.sub-menu li a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.stopPropagation(); // prevent closing
+          clearActiveStates();
 
-                // Activate submenu item
-                this.parentElement.classList.add('active');
+          // Activate clicked submenu item
+          this.parentElement.classList.add('active');
 
-                // Also activate the parent <li> of the dropdown
-                const parentLi = this.closest('li').closest('.sub-menu').closest('li');
-                parentLi.classList.add('active');
-                parentLi.querySelector('.sub-menu').classList.add('show');
-            });
+          // Also activate its parent menu
+          const parentLi = this.closest('li').closest('.sub-menu').closest('li');
+          parentLi.classList.add('active');
+          parentLi.querySelector('.sub-menu').classList.add('show');
         });
+      });
 
-        function clearActiveStates() {
-            document.querySelectorAll('#sidebar li').forEach(li => li.classList.remove('active'));
-            document.querySelectorAll('.sub-menu').forEach(ul => ul.classList.remove('show'));
+      // Click outside to close all
+      window.addEventListener('click', function (event) {
+        if (!sidebar.contains(event.target)) {
+          clearActiveStates();
         }
+      });
+
+      function clearActiveStates() {
+        document.querySelectorAll('#sidebar li').forEach(li => li.classList.remove('active'));
+        document.querySelectorAll('.sub-menu').forEach(ul => ul.classList.remove('show'));
+      }
     });
 </script>

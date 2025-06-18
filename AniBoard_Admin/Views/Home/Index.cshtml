@@ -3,27 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <header class="dashboard-head">
 
-    <div class="header-left"><h1>Super Admin</h1></div>
-
-    <div class="right-login">
-        <span href="#" class="button toggle-login">
-            <img src="/Images/icon-log.png" alt="icon-log">
-        </span><!-- .button .toggle-login -->
-
-        <div class="login">
-            <div class="triangle"></div><!-- .triangle -->
-            
-            <ul>
-                <li><a href="/Home/Logout"> <img src="/Images/icon_sign_out.png" alt="icon-log">  Sign out</a> </li>
-
-            </ul>
-           
-        </div><!--  .login -->
-    </div><!-- .right -->
-    <div class="clear"></div>
-</header>
  
   
     <div class="container" style="padding:15px;">
@@ -119,11 +99,11 @@
             </div>
         <div class="row">
             <div class="col-md-12">
-                  
+            <a  href="#demo-modal">1</a>
         <div class="b-pagination-outer">
             <ul id="border-pagination">
                     <li><a class="" href="javascript:void(0)">«</a></li>
-                    <li><a href="javascript:void(0)">1</a></li>
+                    <li><a class=" " href="javascript:void(0)">1</a></li>
                     <li><a href="javascript:void(0)" class="active">2</a></li>
                     <li><a href="javascript:void(0)">3</a></li>
                     <li><a href="javascript:void(0)">4</a></li>
@@ -137,6 +117,18 @@
 
             </div>
     </div>
+
+
+<div id="demo-modal" class="modal">
+    <div class="modal__content">
+
+        <h2>Title Name</h2>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
+
+        <a href="#" class="modal__close">&times;</a>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $('.toggle-login').click(function () {
