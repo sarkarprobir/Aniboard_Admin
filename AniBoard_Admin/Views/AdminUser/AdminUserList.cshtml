@@ -1,0 +1,70 @@
+﻿<main>
+	<header class="dashboard-head mb-4">
+		<h1>Admin User List</h1>
+	</header>
+
+	<div class="container">
+		<div class="row mb-4">
+			<div class="col-md-12 body-top-sec">
+				<div class="box-content" style=" background:#f1ebfc;">
+					<div class="form-group has-search col-md-6">
+						<button onclick="javascript:searchuser();">
+                            <span class="fa fa-search form-control-feedback"></span>
+                        </button>
+						<input type="text" class="form-control" placeholder="Search" id="admin_user_search">
+					</div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-round-2 col-md-1">+ Add</button>
+                    </div>
+                    
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content-card" style=" background:#f1ebfc;">
+                    <table class="table-style" cellspacing="0" cellpadding="15">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap"><a>ID </a></th>
+                                <th class="text-nowrap"><a>First Name</a></th>
+                                <th class="text-nowrap"><a>Last Name</a></th>
+                                <th class="text-nowrap"><a>Email </a></th>
+                                <th class="text-nowrap"><a>Status </a></th>
+                                <th class="text-nowrap"><a>Action </a></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-nowrap"><a>@item.adminId </a></td>
+                                    <td class="text-nowrap"><a>@item.firstName</a></td>
+                                    <td class="text-nowrap"><a>@item.lastName</a></td>
+                                    <td class="text-nowrap"><a>@item.email</a></td>
+                                    <td class="text-nowrap"><a>@item.isActive </a></td>
+                                    <td class="text-nowrap"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""> <img style="width:18px;" src="/Images/ico-delete.png" alt=""> </td>
+                                </tr>
+                            }
+                            @* <tr>
+                                <td class="text-nowrap"><a> </a></td>
+                                <td class="text-nowrap"><a>F</a></td>
+                                <td class="text-nowrap"><a>N 3</a></td>
+                                <td class="text-nowrap"><a>abc@gmail.com</a></td>
+                                <td class="text-nowrap"><a>Active </a></td>
+                                <td class="text-nowrap"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""> <img style="width:18px;" src="/Images/ico-delete.png" alt=""> </td>
+                            </tr> *@
+                            
+
+                        </tbody>
+                    </table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</main>
+<script src="/js/pages/adminuser.js" asp-append-version="true"></script>
