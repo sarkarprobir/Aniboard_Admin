@@ -1,0 +1,61 @@
+ /* If you like this, be sure to ❤️ it. */
+
+
+
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(77 77 77 / 90%);
+    transition: all .4s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__content h2{
+    width: 100%;
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+ 
+
+.modal__content {
+  border-radius: 4px;
+  position: relative;
+  width: 600px;
+  max-width: 90%;
+  background: #fff;
+  padding: 1em 2em;
+}
+
+.modal__footer {
+  text-align: right;
+  a {
+    color: #585858;
+  }
+  i {
+    color: #d02d2c;
+  }
+}
+.modal__close {
+    position: absolute;
+    top: 3px;
+    right: 18px;
+    color: #585858;
+    text-decoration: none;
+    font-size: 22px;
+}
+    .modal__close:hover {color:red;
+    }

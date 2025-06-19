@@ -19,9 +19,8 @@ body {
     margin: 0px;
 }
 #sidebar {
-  box-sizing: border-box;
-  height: 100vh;
-  width: 250px;
+  box-sizing: border-box; 
+  width: 100%;
   padding: 5px 1em;
   background-color: var(--base-clr);
   border-right: 1px solid var(--line-clr);
@@ -29,48 +28,59 @@ body {
   top: 0;
   align-self: start;
   transition: 300ms ease-in-out;
-  overflow: hidden;
-  text-wrap: nowrap;
+  
 }
 #sidebar.close {
   padding: 5px;
   width: 60px;
 }
-#sidebar ul {
-  list-style: none;
-}
-#sidebar > ul > li:first-child {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-  .logo {
-    font-weight: 600;
-  }
-}
-#sidebar ul li.active a {
-  color: #fff;
-  svg {
+
+    #sidebar .blanklik {
+        display: block !important;
+        text-align: center;
+    }
+
+
+    #sidebar > ul > li:first-child {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 100px;
+        padding: 15px 20px 0px 20px;
+    }
+    #sidebar ul li {list-style-type:none; position:relative;
+    }
+
+        #sidebar ul li.active a {
+            color: #fff;
+            padding: 15px 20px;
+            svg {
     fill: var(--accent-clr);
   }
+}
+#sidebar ul li {
+    float: left;
+    margin: 0 2px;
+    width: 170px;
 }
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .logo {
-  border-radius: 0em;
-  padding: 0.85em;
-  text-decoration: none;
-  color: var(--text-clr);
-  display: flex;
-  align-items: center;
-  gap: 1em;
+    border-radius: 0em;
+    padding:0;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 .dropdown-btn {
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    padding: 15px 20px;
 }
 #sidebar svg {
   flex-shrink: 0;
@@ -80,30 +90,39 @@ body {
 #sidebar .dropdown-btn span {
   flex-grow: 1;
   font-size:14px;
+  text-align:center;
 }
-#sidebar a:hover,
+
 #sidebar .dropdown-btn:hover {
-  background-color: #4c4e9a;
+    background-color: #373739;
+    padding: 17px 20px;
+  
 }
+#sidebar .dropdown-btn {
+    padding: 17px 20px;
+}
+ 
+
 #sidebar .sub-menu {
   display: grid;
   grid-template-rows: 0fr;
-  transition: 300ms ease-in-out;
-  > div {
+ 
+  div {
     overflow: hidden;
   }
 }
 #sidebar .sub-menu.show {
     grid-template-rows: 1fr;
     padding: 0;
-    background: #2a2b4d;
+    background: #5b5b5e;
 }
 
- 
+.logo img {width:120px; margin-right:50px;
+}
 
-    .dropdown-btn svg {
-        transition: 200ms ease;
-    }
+.dropdown-btn svg {
+    transition: 200ms ease;
+}
 .rotate svg:last-child {
   rotate: 180deg;
 }
@@ -111,7 +130,12 @@ body {
   padding-left: 2em;
   font-size:14px;
 }
-#toggle-btn {
+
+    #sidebar .sub-menu a:hover {
+        background: #373739;
+        color: #fff;
+    }
+    #toggle-btn {
   margin-left: auto;
   padding: 1em;
   border: none;
@@ -135,10 +159,10 @@ body {
 
 
 .dashboard-head {
-    padding: 0px 21px 0px 30px;
-    background: #f5f5f5;
-    margin: 0px -20px 25px -20px;
+    padding: 0px 10px 0px 30px; 
+    /* margin: 0px -20px 25px -20px; */
     display: block;
+    float: right;
 }
 
     .dashboard-head h1 {
@@ -156,7 +180,7 @@ body {
     }
 
         .table-style tr th {
-            background: #2a2b4d;
+            background:#0dcaf0;
             color: #fff;
             font-weight: normal;
             font-size: 14px;
@@ -181,16 +205,22 @@ body {
     border: 10px solid #ffffff;
 }
 h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}	
-.logo{width:100%; text-align:left;}	
+.logo{width:100%; text-align:left;}
 #sidebar ul li.active > a,
 #sidebar ul li.active > button {
-  background-color: #4c4e9a;
-  color: #fff;
+    background-color: #4c4e9a;
+    color: #fff;
+    
 }
 
 #sidebar ul li .sub-menu li.active a { background-color: #4c4e9a; color: #fff;}
 .sub-menu {display: none; list-style: none; padding-left: 20px;}
-.sub-menu.show {display: block;}
+    .sub-menu.show {
+        display: block;
+        position: absolute;
+        top: 0px;
+        top: 58px;
+    }
 
 /*pagenation------------------------------------------------------*/
 
@@ -629,17 +659,16 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
 
 /* Sidebar */
 #sidebar {
-    width: 250px;
+    width: 100%;
   
-    min-height: 100vh;
-    padding: 15px;
+    padding: 5px 15px;
     box-sizing: border-box;
 }
     #sidebar ul {padding:0px; margin:0px;;
     }
     /* Main content */
 
-.wrapper {display:flex;
+.wrapper { 
 }
 
 .topcontent-box {
@@ -655,7 +684,7 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
 /**/
 
 .dashboard-head .right-login {
-    float: right
+    float: right; position:relative;
 }
 
     .dashboard-head .right-login .login img {
@@ -666,8 +695,7 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
     .dashboard-head .right-login .button {
        
         cursor: pointer;
-        float: right;
-        padding: 12px 0px;
+        float: right; 
         text-align: center;
         transition: background .3s;
         width: auto;
@@ -675,23 +703,23 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
     }
         .dashboard-head .right-login .button img {
             width: 26px;
+            margin: 15px 0 0 0px;
         }
-        .dashboard-head .right-login .login {
-    display: none;
-    margin-bottom: 2%;
-    margin-top: 42px;
-    position: absolute;
-    right: 9px;
-    width: 160px;
-}
+    .dashboard-head .right-login .login {
+        display: none;
+        margin-bottom: 2%;
+        margin-top: 42px;
+        position: absolute;
+        left: -125px;
+        width: 160px;
+    }
 
     .dashboard-head .right-login .triangle {
         border-right: 10px solid transparent;
-        border-bottom: 10px solid #fff;
+        border-bottom: 10px solid #dedede;
         border-left: 10px solid transparent;
         margin-left: 127px;
         width: 0;
-       
     }
     .dashboard-head .right-login ul li {
         list-style-type: none;
@@ -702,16 +730,14 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
     .dashboard-head .right-login ul {
         box-shadow: rgb(99 99 99 / 8%) 0px 2px 8px 0px;
         padding: 0px;
-        background: #ffffff;
-       
+        background: #dedede;
         border-radius: 4px 0px 4px 4px;
     }
-        .dashboard-head .right-login ul li a:hover {
-          
-            color: #4c4e9a;
-           
+    
+        .dashboard-head .right-login ul li:hover {
+            color: blue;
         }
-        .dashboard-head .right-login ul li a {text-decoration:none; color:#000; display:block;
+        .dashboard-head .right-login ul li a {text-decoration:none; color:#000 !important; display:block;
         }
 
 .clear {clear:both
