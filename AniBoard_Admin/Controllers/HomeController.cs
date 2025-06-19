@@ -83,10 +83,10 @@ namespace AniBoard_Admin.Controllers
                 // calling api
                 var queryParams = new Dictionary<string, string?>();
 
-                if (!string.IsNullOrWhiteSpace(username))
+                if (!string.IsNullOrEmpty(username))
                     queryParams["userEmail"] = username;
 
-                if (!string.IsNullOrWhiteSpace(userpassword))
+                if (!string.IsNullOrEmpty(userpassword))
                     queryParams["userPassword"] = userpassword;
 
                 var users = await _apiService.GetAsync<ApiResponse<List<AdminUser>>>("Backoffice/AdminUserGet", queryParams);
