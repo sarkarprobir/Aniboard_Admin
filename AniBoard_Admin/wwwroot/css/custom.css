@@ -28,6 +28,7 @@ body {
   top: 0;
   align-self: start;
   transition: 300ms ease-in-out;
+  z-index:99;
   
 }
 #sidebar.close {
@@ -114,11 +115,14 @@ body {
 #sidebar .sub-menu.show {
     grid-template-rows: 1fr;
     padding: 0;
-    background: #5b5b5e;
+    background: #4c4e9a;
 }
+   
 
-.logo img {width:120px; margin-right:50px;
-}
+    .logo img {
+        width: 120px;
+        margin-right: 50px;
+    }
 
 .dropdown-btn svg {
     transition: 200ms ease;
@@ -180,7 +184,7 @@ body {
     }
 
         .table-style tr th {
-            background:#0dcaf0;
+            background: #4c4e9a;
             color: #fff;
             font-weight: normal;
             font-size: 14px;
@@ -202,7 +206,7 @@ body {
 .table-style {
     background: #f7f7f7;
     padding: 8px;
-    border: 10px solid #ffffff;
+    border: 0px solid #ffffff;
 }
 h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}	
 .logo{width:100%; text-align:left;}
@@ -547,11 +551,9 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
 
 /*---------search----------------*/
 
-.has-search .form-control {
-    padding-left: 2.375rem;
-}
+ 
 
-.has-search .form-control-feedback {
+/*.has-search .form-control-feedback {
     position: absolute;
     z-index: 2;
     display: block;
@@ -561,7 +563,7 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
     text-align: center;
     pointer-events: none;
     color: #aaa;
-}
+}*/
 
 
 .loading {
@@ -636,12 +638,11 @@ select::-ms-expand {
 .body-top-sec{ }
 
 .body-top-sec .box-content{ 
-    padding: 15px;
-    border: 1px solid #ddd;
+    padding:0px;
+    border: 0px solid #ddd;
     border-radius: 6px;}
 	
-	.content-card{ padding: 15px;
-    border: 1px solid #ddd;
+	.content-card{ 
     border-radius: 6px; height:100vh}
 	
 	button:focus {
@@ -725,13 +726,13 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
         list-style-type: none;
         line-height: 16px;
         font-size: 14px;
-        padding: 10px;
+        padding: 14px;
     }
     .dashboard-head .right-login ul {
         box-shadow: rgb(99 99 99 / 8%) 0px 2px 8px 0px;
         padding: 0px;
         background: #dedede;
-        border-radius: 4px 0px 4px 4px;
+        border-radius: 4px 4px 4px 4px;
     }
     
         .dashboard-head .right-login ul li:hover {
@@ -742,4 +743,18 @@ main{overflow-x:hidden;    padding:0 20px; width:100%;}
 
 .clear {clear:both
 }
- 
+
+.has-search {position:relative;
+}
+    .has-search button {
+        float: right;
+        position: absolute;
+        right:13px;
+        top: 1px;
+        border: 0;
+        padding: 6px 10px;
+        border-radius:0px 2px 2px 0px;
+    }
+.search-add {
+    padding: 7px;
+}
