@@ -1,11 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
-
-
  
-  
     <div class="container" style="padding:15px;">
         <div class="row">
             <div class="col-md-12">
@@ -129,21 +126,6 @@
         <a href="#" class="modal__close">&times;</a>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $('.toggle-login').click(function () {
-      $('.login').toggle();
-    });
-
-    $(document).mouseup(function (e) {
-      var container = $(".login");
-      if (!container.is(e.target) &&
-      container.has(e.target).length == 0)
-      {
-        container.fadeOut();
-      }
-    });
-    //# sourceURL=pen.js
-</script>
+ 
 
  
