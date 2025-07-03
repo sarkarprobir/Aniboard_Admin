@@ -19,7 +19,7 @@
                     </button>
 					</div>
                     <div class="col-md-1">
-                        <button class="btn btn-primary search-add">+ Add</button>
+                        <a class="btn btn-primary search-add" href="#AdminUser-modal" onclick="javascript:showaddedit_modal(0);">+ Add</a>
                     </div>
                 </div>
 				</div>
@@ -50,7 +50,7 @@
                                     <td class="text-nowrap"><a>@item.lastName</a></td>
                                     <td class="text-nowrap"><a>@item.email</a></td>
                                     <td class="text-nowrap"><a>@item.isActive </a></td>
-                                    <td class="text-nowrap"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""> <img style="width:18px;" src="/Images/ico-delete.png" alt=""> </td>
+                                <td class="text-nowrap"><a href="#AdminUser-modal" onclick="javascript:showaddedit_modal(@item.adminId);"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""></a> <a onclick="javascript:deleteadminuser(@item.adminId);"><img style="width:18px;" src="/Images/ico-delete.png" alt=""></a> </td>
                                 </tr>
                             }
                             @* <tr>
@@ -71,6 +71,12 @@
 
 	</div>
 
- 
+<div id="AdminUser-modal" class="modal">
+    <div class="modal__content">
+        <h2>Admin User</h2>
+        <div id="adminuser_body"></div>
+        <a href="#" class="modal__close">&times;</a>
+    </div>
+</div>
 <script src="/js/pages/adminuser.js" asp-append-version="true"></script>
  

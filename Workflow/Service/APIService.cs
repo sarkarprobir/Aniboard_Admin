@@ -57,6 +57,32 @@ namespace Workflow.Service
             }
         }
 
+        public async Task<TResponse?> PostAsync<TRequest, TResponse>(string endpoint, TRequest data)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(Settings.apiBaseurl + endpoint, data);
+                response.EnsureSuccessStatusCode();
+
+                var result = await response.Content.ReadFromJsonAsync<TResponse>(new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                return result;
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, $"HTTP error during POST to {endpoint}");
+                return default;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Unexpected error during POST to {endpoint}");
+                return default;
+            }
+        }
+
 
     }
 }

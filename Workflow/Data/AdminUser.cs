@@ -20,6 +20,7 @@ namespace Workflow.Data
         public DateTime? updatedAt { get; set; }
         public int updatedBy { get; set; }
         public int isDelete { get; set; }
+        public int userStatus { get; set; }
 
     }
 }

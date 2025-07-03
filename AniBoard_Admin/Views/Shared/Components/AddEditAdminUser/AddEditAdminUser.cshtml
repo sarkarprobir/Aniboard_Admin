@@ -1,0 +1,88 @@
+﻿<div class="col-md-12">
+    <div class="textbox-sec" >
+        
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.adminUser.firstName))
+            {
+                <input type="text" placeholder="First name" id="firstName" value="@Model.adminUser.firstName">
+            }
+            else
+            {
+                <input type="text" placeholder="First name" id="firstName">
+            }
+            
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.adminUser.lastName))
+            {
+                <input type="text" placeholder="Last name" id="lastName" value="@Model.adminUser.lastName">
+            }
+            else
+            {
+                <input type="text" placeholder="Last name" id="lastName">
+            }
+            
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.adminUser.email))
+            {
+                <input type="text" placeholder="Email" id="email" value="@Model.adminUser.email">
+            }
+            else
+            {
+                <input type="text" placeholder="Email" id="email">
+            }
+            
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="justify__space_between  ">
+            @if (!string.IsNullOrEmpty(Model.adminUser.userPassword))
+            {
+                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password" value="@Model.adminUser.userPassword">
+            }
+            else
+            {
+                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password">
+            }
+            
+            <span toggle="#userpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            <div class="valitation" style="display:none;" id="invalidPassword">Enter  Your Mail id</div>
+        </div>
+        <div class="radio">
+            @if (Model.userId >0)
+            {
+                @if (Model.adminUser.isActive == true)
+                {
+                    <input id="radio-1" name="radio" type="radio" value="true" checked="">
+                    <label for="radio-1" class="radio-label">Active</label>
+
+                    <input id="radio-2" name="radio" value="false" type="radio">
+                    <label for="radio-2" class="radio-label">In Active</label>
+                }
+                else
+                {
+                    <input id="radio-1" name="radio" type="radio" value="true" >
+                    <label for="radio-1" class="radio-label">Active</label>
+
+                    <input id="radio-2" name="radio" value="false" type="radio" checked="">
+                    <label for="radio-2" class="radio-label">In Active</label>
+                }
+            }
+            else
+            {
+                <input id="radio-1" name="radio" type="radio" value="true" checked="">
+                <label for="radio-1" class="radio-label">Active</label>
+
+                <input id="radio-2" name="radio" value="false" type="radio">
+                <label for="radio-2" class="radio-label">In Active</label>
+            }
+            
+            
+        </div>
+        <button class="btn btn-primary btn-round-2" onclick="javascript:saveadminuserdata();">Submit</button>
+        <input type="hidden" id="userId" value="@Model.userId" />
+    </div>
+</div>
+<script src="/js/pages/AddEditAdminUser.js" asp-append-version="true"></script>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Security.Principal;
 using Workflow.Data;
 using Workflow.Service.Interface;
 
@@ -34,6 +36,48 @@ namespace AniBoard_Admin.Controllers
                 }
             }
             return View(adminUser);
+        }
+        public IActionResult ShowAddEditModal(int userId = 0)
+        {
+            try
+            {
+                return ViewComponent("AddEditAdminUser", new { userId = userId});
+            }
+            catch (Exception err)
+            {
+                //_sessionService.SetServerException(err);
+                return Redirect("/error/");
+            }
+        }
+        public async Task<IActionResult> SaveAdminUser(string data)
+        {
+            var fromdata = Request.Form["data"];
+            AdminUser adminUser= JsonConvert.DeserializeObject<AdminUser>(fromdata);
+            var result = await _apiService.PostAsync<AdminUser, ApiResponse<AdminUser>>("Backoffice/SaveAdminUser", adminUser);
+
+            if (result?.Status == true)
+            {
+                Console.WriteLine("User created: " + result?.Message);
+                return Json(new
+                {
+                    Ok = true,
+                    Errors = ""
+                });
+            }
+            else
+            {
+                Console.WriteLine("Failed to create user: " + result?.Message);
+                return Json(new
+                {
+                    Ok = false,
+                    Errors = result?.Message
+                });
+            }
+
+
+
+            
+
         }
     }
 }

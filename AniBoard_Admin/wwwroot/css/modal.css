@@ -18,10 +18,10 @@
     transition: all .4s;
 }
 
-.modal:target {
-  visibility: visible;
-  opacity: 1;
-}
+    .modal:target {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 
 .modal__content h2{
     width: 100%;
