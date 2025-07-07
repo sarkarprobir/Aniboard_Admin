@@ -37,7 +37,7 @@
             
             <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
         </div>
-        <div class="justify__space_between  ">
+        <div class="inputWithIcon ">
             @if (!string.IsNullOrEmpty(Model.adminUser.userPassword))
             {
                 <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password" value="@Model.adminUser.userPassword">
@@ -46,7 +46,7 @@
             {
                 <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password">
             }
-            
+            <i class="fa fa-lock" style=" top: 2px; font-size: 21px;" aria-hidden="true"></i>
             <span toggle="#userpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             <div class="valitation" style="display:none;" id="invalidPassword">Enter  Your Mail id</div>
         </div>
