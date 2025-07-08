@@ -27,6 +27,7 @@ function saveadminuserdata() {
         processData: false,
         success: function (data) {
             if (data.ok) {
+
                 alert('User created sucessfully');
                 setTimeout(function () {
                     window.location.href ='/AdminUser/AdminUserList';

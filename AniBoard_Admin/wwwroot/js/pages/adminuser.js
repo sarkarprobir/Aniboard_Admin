@@ -4,6 +4,7 @@ function searchuser() {
     var searchText = $('#admin_user_search').val();
     if (searchText != null && searchText != '') {
         alert(searchText);
+        window.location.href = '/AdminUser/AdminUserList?q=' + searchText ;
     }
 }
 
@@ -24,31 +25,38 @@ function showaddedit_modal(userId) {
     });
 }
 
-function deleteadminuser(userId) {
-    var data = {
-        adminId: userId,
-        isDelete: 1
-    };
-    var formData = new FormData();
-    formData.append('data', JSON.stringify(data));
-    $.ajax({
-        type: "POST",
-        url: '/AdminUser/SaveAdminUser',
-        data: formData,
-        dataType: 'json',
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            if (data.ok) {
-                alert('User deleted sucessfully');
-                setTimeout(function () {
-                    window.location.href = '/AdminUser/AdminUserList';
-                }, 1000);
-            } else {
-                alert(data.errmsg);
+function deleteadminuser(userId, useremail, firstName, lastName) {
+    if (confirm("Are you sure you want to delete this user?")) {
+        var data = {
+            adminId: userId,
+            firstName: firstName,
+            lastName: lastName,
+            email: useremail,
+            userPassword: '',
+            isDelete: 1
+        };
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+        $.ajax({
+            type: "POST",
+            url: '/AdminUser/SaveAdminUser',
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.ok) {
+                    alert('User deleted sucessfully');
+                    setTimeout(function () {
+                        window.location.href = '/AdminUser/AdminUserList';
+                    }, 1000);
+                } else {
+                    alert(data.errmsg);
+                }
             }
-        }
-    });
+        });
+    }
+    
 
     return false;
 

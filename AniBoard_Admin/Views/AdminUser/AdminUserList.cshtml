@@ -50,7 +50,7 @@
                                     <td class="text-nowrap"><a>@item.lastName</a></td>
                                     <td class="text-nowrap"><a>@item.email</a></td>
                                     <td class="text-nowrap"><a>@item.isActive </a></td>
-                                <td class="text-nowrap"><a href="#AdminUser-modal" onclick="javascript:showaddedit_modal(@item.adminId);"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""></a> <a onclick="javascript:deleteadminuser(@item.adminId);"><img style="width:18px;" src="/Images/ico-delete.png" alt=""></a> </td>
+                                <td class="text-nowrap"><a href="#AdminUser-modal" onclick="javascript:showaddedit_modal(@item.adminId);"><img style="width:18px; margin-right:10px;" src="/Images/ico-edit.png" alt=""></a> <a href="javascript:void(0);" onclick="javascript:deleteadminuser(@item.adminId,'@item.email','@item.firstName','@item.lastName');"><img style="width:18px;" src="/Images/ico-delete.png" alt=""></a> </td>
                                 </tr>
                             }
                             @* <tr>
