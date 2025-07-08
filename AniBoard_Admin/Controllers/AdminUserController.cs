@@ -24,7 +24,7 @@ namespace AniBoard_Admin.Controllers
             var queryParams = new Dictionary<string, string?>();
 
             if (!string.IsNullOrEmpty(q))
-                queryParams["userEmail"] = q;
+                queryParams["searchKeyword"] = q;
 
             
             var users = await _apiService.GetAsync<ApiResponse<List<AdminUser>>>("Backoffice/AdminUserGet", queryParams);
