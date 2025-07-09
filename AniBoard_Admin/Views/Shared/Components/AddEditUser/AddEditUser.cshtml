@@ -1,0 +1,163 @@
+﻿
+<div class="col-md-12">
+    <div class="textbox-sec">
+
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.FirstName))
+            {
+                <input type="text" placeholder="First name" id="firstName" value="@Model.User.FirstName">
+            }
+            else
+            {
+                <input type="text" placeholder="First name" id="firstName">
+            }
+
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.LastName))
+            {
+                <input type="text" placeholder="Last name" id="lastName" value="@Model.User.LastName">
+            }
+            else
+            {
+                <input type="text" placeholder="Last name" id="lastName">
+            }
+
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.Email))
+            {
+                <input type="text" placeholder="Email" id="email" value="@Model.User.Email">
+            }
+            else
+            {
+                <input type="text" placeholder="Email" id="email">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon ">
+            @if (!string.IsNullOrEmpty(Model.User.Password))
+            {
+                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password" value="@Model.User.Password">
+            }
+            else
+            {
+                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password">
+            }
+            <i class="fa fa-lock" style=" top: 2px; font-size: 21px;" aria-hidden="true"></i>
+            <span toggle="#userpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            <div class="valitation" style="display:none;" id="invalidPassword">Enter  Your Password</div>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.PhoneNumber))
+            {
+                <input type="text" placeholder="Phone" id="phone" value="@Model.User.PhoneNumber">
+            }
+            else
+            {
+                <input type="text" placeholder="Phone" id="phone">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.Address))
+            {
+                <input type="text" placeholder="Address" id="Address" value="@Model.User.Address">
+            }
+            else
+            {
+                <input type="text" placeholder="Address" id="Address">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.City))
+            {
+                <input type="text" placeholder="City" id="City" value="@Model.User.City">
+            }
+            else
+            {
+                <input type="text" placeholder="City" id="City">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.State))
+            {
+                <input type="text" placeholder="State" id="State" value="@Model.User.State">
+            }
+            else
+            {
+                <input type="text" placeholder="State" id="State">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.ZipCode))
+            {
+                <input type="text" placeholder="ZipCode" id="ZipCode" value="@Model.User.ZipCode">
+            }
+            else
+            {
+                <input type="text" placeholder="ZipCode" id="ZipCode">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            @if (!string.IsNullOrEmpty(Model.User.Country))
+            {
+                <input type="text" placeholder="Country" id="Country" value="@Model.User.Country">
+            }
+            else
+            {
+                <input type="text" placeholder="Country" id="Country">
+            }
+
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+
+
+        <div class="radio">
+            @if (!string.IsNullOrEmpty(Model.userId))
+            {
+                @if (Model.User.IsActive == true)
+                {
+                    <input id="radio-1" name="radio" type="radio" value="true" checked="">
+                    <label for="radio-1" class="radio-label">Active</label>
+
+                    <input id="radio-2" name="radio" value="false" type="radio">
+                    <label for="radio-2" class="radio-label">In Active</label>
+                }
+                else
+                {
+                    <input id="radio-1" name="radio" type="radio" value="true">
+                    <label for="radio-1" class="radio-label">Active</label>
+
+                    <input id="radio-2" name="radio" value="false" type="radio" checked="">
+                    <label for="radio-2" class="radio-label">In Active</label>
+                }
+            }
+            else
+            {
+                <input id="radio-1" name="radio" type="radio" value="true" checked="">
+                <label for="radio-1" class="radio-label">Active</label>
+
+                <input id="radio-2" name="radio" value="false" type="radio">
+                <label for="radio-2" class="radio-label">In Active</label>
+            }
+
+
+        </div>
+        <button class="btn btn-primary btn-round-2" onclick="javascript:saveuserdata();">Submit</button>
+        <input type="hidden" id="userId" value="@Model.userId" />
+    </div>
+</div>
+<script src="/js/pages/AddEditUser.js" asp-append-version="true"></script>
