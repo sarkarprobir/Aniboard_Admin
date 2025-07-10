@@ -1,47 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Security.Principal;
-using Workflow.Data;
 using Workflow.Service.Interface;
-
+using Newtonsoft.Json;
+using Workflow.Data;
+using System.Dynamic;
 namespace AniBoard_Admin.Controllers
 {
-    public class AdminUserController : Controller
+    public class UserController : Controller
     {
         private readonly IAPIService _apiService;
         private readonly ISessionService _sessionService;
-
-        public AdminUserController(IAPIService apiService, ISessionService sessionService)
+        public UserController(IAPIService apiService, ISessionService sessionService)
         {
             _apiService = apiService;
             _sessionService = sessionService;
         }
-        public async Task<IActionResult> AdminUserList(string q = null)
-        {
-            List<AdminUser> adminUser = new List<AdminUser>();
 
+        public async Task<IActionResult> UserList(string q = null)
+        {
+            List<User> user = new List<User>();
+            dynamic dyUser = new ExpandoObject();
             // calling api
             var queryParams = new Dictionary<string, string?>();
 
             if (!string.IsNullOrEmpty(q))
                 queryParams["searchKeyword"] = q;
 
-            
-            var users = await _apiService.GetAsync<ApiResponse<List<AdminUser>>>("Backoffice/AdminUserGet", queryParams);
+
+            var users = await _apiService.GetAsync<ApiResponse<List<User>>>("Backoffice/UserGet", queryParams);
             if (users != null)
             {
                 if (users.Data.Count > 0)
                 {
-                    adminUser = users.Data;
+                    user = users.Data;
                 }
             }
-            return View(adminUser);
+            dyUser.user = user;
+            dyUser.q = q;
+            return View(dyUser);
         }
-        public IActionResult ShowAddEditModal(int userId = 0)
+        public IActionResult ShowAddEditModal(string userId = null)
         {
             try
             {
-                return ViewComponent("AddEditAdminUser", new { userId = userId});
+                return ViewComponent("AddEditUser", new { userId = userId });
             }
             catch (Exception err)
             {
@@ -49,11 +50,11 @@ namespace AniBoard_Admin.Controllers
                 return Redirect("/error/");
             }
         }
-        public async Task<IActionResult> SaveAdminUser(string data)
+        public async Task<IActionResult> SaveUser(string data)
         {
             var fromdata = Request.Form["data"];
-            AdminUser adminUser= JsonConvert.DeserializeObject<AdminUser>(fromdata);
-            var result = await _apiService.PostAsync<AdminUser, ApiResponse<AdminUser>>("Backoffice/SaveAdminUser", adminUser);
+            User user = JsonConvert.DeserializeObject<User>(fromdata);
+            var result = await _apiService.PostAsync<User, ApiResponse<User>>("Backoffice/SaveUser", user);
 
             if (result?.Status == true)
             {
@@ -76,7 +77,7 @@ namespace AniBoard_Admin.Controllers
 
 
 
-            
+
 
         }
     }

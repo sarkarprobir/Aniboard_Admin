@@ -1,45 +1,39 @@
-﻿
-
-function searchuser() {
-    var searchText = $('#admin_user_search').val();
+﻿function searchuser() {
+    var searchText = $('#user_search').val();
     if (searchText != null && searchText != '') {
-        alert(searchText);
-        window.location.href = '/AdminUser/AdminUserList?q=' + searchText ;
+        //alert(searchText);
+        window.location.href = '/User/UserList?q=' + searchText;
+    }
+    else {
+        window.location.href = '/User/UserList';
     }
 }
 
 function showaddedit_modal(userId) {
-    $("#adminuser_body").empty();
-    //var divspinner = '<div class="spinner-border text-success" role="status"><span class="visually-hidden"></span></div>';
-    //$("#edit_account_modal").val(divspinner);
-    //$('#edit_log_partial_caption').text(id);
+    $("#user_body").empty();
+    
     $.ajax({
-        url: "/AdminUser/ShowAddEditModal",
+        url: "/User/ShowAddEditModal",
         type: "GET",
         data: { "userId": userId },
         datatype: "json",
         success: function (data) {
-            $("#adminuser_body").html(data);
-            //$("#AdminUser-modal").modal('show');
+            $("#user_body").html(data);
         },
     });
 }
 
-function deleteadminuser(userId, useremail, firstName, lastName) {
+function deleteadminuser(userId) {
     if (confirm("Are you sure you want to delete this user?")) {
         var data = {
-            adminId: userId,
-            firstName: firstName,
-            lastName: lastName,
-            email: useremail,
-            userPassword: '',
+            CustomerId: userId,
             isDelete: 1
         };
         var formData = new FormData();
         formData.append('data', JSON.stringify(data));
         $.ajax({
             type: "POST",
-            url: '/AdminUser/SaveAdminUser',
+            url: '/User/SaveUser',
             data: formData,
             dataType: 'json',
             contentType: false,
@@ -48,7 +42,7 @@ function deleteadminuser(userId, useremail, firstName, lastName) {
                 if (data.ok) {
                     alert('User deleted sucessfully');
                     setTimeout(function () {
-                        window.location.href = '/AdminUser/AdminUserList';
+                        window.location.href = '/User/UserList';
                     }, 1000);
                 } else {
                     alert(data.errmsg);
@@ -56,7 +50,7 @@ function deleteadminuser(userId, useremail, firstName, lastName) {
             }
         });
     }
-    
+
 
     return false;
 
