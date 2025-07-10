@@ -42,6 +42,7 @@ namespace AniBoard_Admin.Controllers
             dyLogin.errMsg = "";
             return View(dyLogin);
         }
+    
         public IActionResult Logout() 
         {
             _sessionService.RemoveAllSession();
@@ -121,6 +122,12 @@ namespace AniBoard_Admin.Controllers
                 
             }
             return View(dyLogin);
+        } 
+        public IActionResult ContentEmailAddEdit()
+        {
+            return View("ContentEmailAddEdit");
         }
     }
+
+
 }
