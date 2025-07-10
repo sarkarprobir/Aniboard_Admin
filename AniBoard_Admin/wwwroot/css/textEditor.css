@@ -1,0 +1,115 @@
+.editor {
+  box-shadow: 0 0 2px #CCC;
+  min-height: 350px;
+  overflow: auto;
+  padding: 1em;
+  resize: vertical;
+  outline: none;
+}
+.editor + .form-label {
+  right: unset;
+  background-color: rgba(255, 255, 255, 0);
+}
+.editor.active + .form-label {
+  color: #24486c;
+  background-color: #fff;
+  top: 0 !important;
+}
+
+.customEditor {
+  border: solid 1px #cacaca;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-bottom: 0;
+    border: 1px solid #ddd;
+  
+}
+    .toolbar > div .btn {
+        margin-bottom: 1rem;
+        background-color: #e6e6e6;
+        padding:6px 12px;
+        border-radius:3px;
+    }
+ .toolbar > div .btn:hover {background:#000;
+                            color:#fff;
+}
+
+.htmlEditor_opener a.btn-primary {
+    background-color: #01aed9 !important;
+    border-color: #01aed9 !important;
+}
+.toolbar > div .btn:last-child {
+    margin-right: 0px;
+}
+.htmlEditor_opener a.btn-primary:hover {
+    background: #000 !important;
+    color: #fff;
+}
+
+a[data-command=redo],
+a[data-command=strikeThrough],
+a[data-command=justifyFull],
+a[data-command=insertOrderedList],
+a[data-command=outdent],
+a[data-command=p],
+a[data-command=superscript] {
+  margin-right: 5px;
+}
+
+a[data-command=undo],
+.fore-wrapper,
+a[data-command=justifyLeft],
+a[data-command=insertUnorderedList],
+a[data-command=indent],
+a[data-command=h1],
+a[data-command=subscript] {
+  border-radius: 3px 0 0 3px;
+}
+
+a.palette-item {
+  height: 1em;
+  border-radius: 3px;
+  margin: 2px;
+  border: 1px solid #CCC;
+  width: 25px;
+  height: 25px;
+}
+
+a.palette-item:hover {
+  border: 1px solid #CCC;
+  box-shadow: 0 0 3px #333;
+}
+
+.fore-palette,
+.back-palette {
+  display: none;
+}
+
+.fore-wrapper,
+.back-wrapper {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.fore-wrapper:hover .fore-palette,
+.back-wrapper:hover .back-palette {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  padding: 6px;
+  width: 160px;
+  background: #FFF;
+  border: 1px solid #DDD;
+  box-shadow: 0 0 5px #CCC;
+}
+
+.fore-palette a,
+.back-palette a {
+  background: #FFF;
+  margin-bottom: 2px;
+}/*# sourceMappingURL=textEditor.css.map */

@@ -496,29 +496,28 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
 
 
 /*textbox----------------------------------*/
- 
+
 .textbox-sec input[type="text"] {
-  width: 100%;
-  border: 2px solid #aaa;
-  border-radius: 4px;
-  margin: 8px 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: 0.3s;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
 }
 
-.textbox-sec input[type="text"]:focus {
-  border-color: dodgerBlue;
-  box-shadow: 0 0 8px 0 dodgerBlue;
-}
+    .textbox-sec input[type="text"]:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
 
 .textbox-sec .inputWithIcon input[type="text"] {
-  padding-left: 40px;
+  padding-left: 30px;
 }
 .textbox-sec input[type="password"] {
     width: 100%;
-    border: 2px solid #aaa;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     margin: 8px 0;
     outline: none;
@@ -528,12 +527,12 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
 }
 
     .textbox-sec input[type="password"]:focus {
-        border-color: dodgerBlue;
-        box-shadow: 0 0 8px 0 dodgerBlue;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  
     }
 
 .textbox-sec .inputWithIcon input[type="password"] {
-    padding-left: 40px;
+    padding-left: 30px;
 }
 
 
@@ -558,6 +557,7 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
     padding: 9px 8px;
     color: #aaa;
     transition: 0.3s;
+    font-size:15px;
 }
 
 .textbox-sec .inputWithIcon input[type="text"]:focus + i {
@@ -664,7 +664,7 @@ select::-ms-expand {
     border: 0px solid #ddd;
     border-radius: 6px;}
 	
- .content-card{ border-radius: 6px; height:100vh}	
+ .content-card{ border-radius: 6px;  }	
   button:focus { outline: 0px dotted;  outline: 0px auto -webkit-focus-ring-color; }
   main{overflow-x:hidden; padding:0 20px; width:100%;}
 
@@ -742,4 +742,171 @@ select::-ms-expand {
     }
 .search-add {
     padding: 7px;
+}
+
+.leftarrow-icon {
+    background: #3498db;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+    .leftarrow-icon:hover {background:#000; cursor:pointer;
+    }
+    .leftarrow-icon svg {
+        margin: 0 0 9px 2px;
+    }
+.radioGroup {display:flex; padding:20px 0px;
+}
+    .radioGroup .mr-3 {margin:0 25px 0 0px;
+    }
+    .radioGroup .form-check {margin-right:15px;
+    }
+
+.Editor-buttom {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+    display: block;
+    float: left;
+}
+
+    .Editor-buttom .btnSubmit {
+        float: right;
+        width: auto;
+        padding:6px;
+        font-size:14px;
+    
+      
+    }
+
+.customEditor {
+    border: 0px solid #ddd;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    padding:0px;
+}
+    .customEditor .btn {min-width:auto;
+    }
+
+#Email-Add-Edit .modal__content {width:80% !important;
+}
+
+.Mail-content-add-edit .content-card .pagination {
+    position: absolute;
+    right: 3%;
+    bottom: 0;
+}
+.textbox-icon {position:relative;
+}
+    .textbox-icon i {
+        position: absolute;
+        left: 7px;
+        top: 10px;
+        color: #aaa;
+        font-size: 16px;
+    }
+
+    .textbox-icon .form-control { padding-left:35px; font-size:14px;
+    }
+.table-style .action  a{ margin-right:25px; text-decoration:none;
+}
+/*
+.Mail-content-add-edit .content-card {
+    overflow-y: auto;
+    height: 469px;
+}*/
+
+
+/**popup modal*/
+.modalBox {
+    display: block;
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    max-width: 90vh;
+    min-width: 50%;
+    height: auto;
+    max-height: 80vh;
+    background-color: #ffffff;
+    padding: 0 1rem;
+    box-shadow: 0px 0px 10px #cacaca;
+    border-radius: 5px;
+     
+    -webkit-animation-name: fade_In;
+    animation-name: fade_In;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+/*    visibility: visible; 
+    opacity: 1;*/
+}
+.modalBox .headerBox {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 50px;
+ 
+}
+.modalBox .headerBox span {
+  padding: 1rem 1rem 0px;
+}
+.modalBox .headerBox .modalCloser {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #cacaca;
+  font-size: 1.5rem;
+}
+.modalBox .headerBox .modalCloser:hover {
+  background-color: rgb(201, 0, 0);
+  color: #ffffff;
+}
+.modalBox .bodyBox {
+  padding: 1rem 0px;
+  height: calc(100% - 150px);
+ 
+}
+.modalBox .footerBox {
+  height: 50px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.modalBox.htmlEditor .html_codeEditor {
+  width: 100%;
+  height: 55vh;
+  font-size: 1.5rem;
+  overflow-y: auto;
+}
+.modalBox.modalBox_close {
+  opacity: 0;
+  top: 0%;
+  -webkit-animation-name: fade_Out;
+          animation-name: fade_Out;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+}
+.modalBox.permitModal {
+  width: auto;
+  min-width: 25%;
+  max-height: 65vh;
+  position: absolute;
+  top: 2rem;
+  left: unset;
+  right: 0;
+  transform: translate(-15%, 0%);
+  pointer-events: all;
+  -webkit-animation-name: fade_In-permitModal;
+          animation-name: fade_In-permitModal;
 }
