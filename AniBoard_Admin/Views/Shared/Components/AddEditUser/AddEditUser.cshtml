@@ -1,7 +1,8 @@
 ﻿
-<div class="col-md-12">
+<div class="col-md-12 user-activity">
     <div class="textbox-sec">
-
+        <div class="row">
+            <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.FirstName))
             {
@@ -12,8 +13,10 @@
                 <input type="text" placeholder="First name" id="firstName">
             }
 
-            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            <i class="fa fa-user " aria-hidden="true"></i>
         </div>
+                </div>
+            <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.LastName))
             {
@@ -24,8 +27,13 @@
                 <input type="text" placeholder="Last name" id="lastName">
             }
 
-            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fa fa-user "  aria-hidden="true"></i>
         </div>
+       </div>
+        </div>
+ 
+    <div class="row">
+        <div class="col-md-12">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.Email))
             {
@@ -36,21 +44,14 @@
                 <input type="text" placeholder="Email" id="email">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fa fa-envelope "  aria-hidden="true"></i>
         </div>
-        <div class="inputWithIcon ">
-            @if (!string.IsNullOrEmpty(Model.User.Password))
-            {
-                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password" value="@Model.User.Password">
-            }
-            else
-            {
-                <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password">
-            }
-            <i class="fa fa-lock" style=" top: 2px; font-size: 21px;" aria-hidden="true"></i>
-            <span toggle="#userpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-            <div class="valitation" style="display:none;" id="invalidPassword">Enter  Your Password</div>
-        </div>
+            </div>
+               
+    </div>
+
+    <div class="row">   
+    <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.PhoneNumber))
             {
@@ -61,20 +62,46 @@
                 <input type="text" placeholder="Phone" id="phone">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
         </div>
-        <div class="inputWithIcon">
+        </div>
+
+            <div class="col-md-6">
+                <div class="inputWithIcon ">
+                    @if (!string.IsNullOrEmpty(Model.User.Password))
+                    {
+                        <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password" value="@Model.User.Password">
+                    }
+                    else
+                    {
+                        <input id="userpassword" type="password" class="form-control" name="userpassword" placeholder="Password">
+                    }
+                    <i class="fa fa-lock" style=" top: 4px; font-size: 15px;" aria-hidden="true"></i>
+                    <span toggle="#userpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    <div class="valitation" style="display:none;" id="invalidPassword">Enter  Your Password</div>
+                </div>
+            </div>
+        <div class="col-md-12">
+            <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.Address))
             {
-                <input type="text" placeholder="Address" id="Address" value="@Model.User.Address">
+                 @* <input type="text" placeholder="Address" id="Address" value="@Model.User.Address"> *@
+                        <textarea name="message" id="Address" value="@Model.User.Address" placeholder="Address" class="address-textarea "></textarea>
             }
             else
             {
-                <input type="text" placeholder="Address" id="Address">
-            }
+                  @* <input type="text" placeholder="Address" id="Address" style="height:100px;">  *@ 
+                      <textarea name="message" id="Address" placeholder="Address" class="address-textarea"></textarea>
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    }
+
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
         </div>
+    </div>
+    </div>
+    <div class="row">
+ 
+    <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.City))
             {
@@ -85,9 +112,11 @@
                 <input type="text" placeholder="City" id="City">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fas fa-city " aria-hidden="true"></i>
         </div>
-        <div class="inputWithIcon">
+        </div>
+        <div class="col-md-6">
+            <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.State))
             {
                 <input type="text" placeholder="State" id="State" value="@Model.User.State">
@@ -97,8 +126,13 @@
                 <input type="text" placeholder="State" id="State">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fas fa-landmark" aria-hidden="true"></i>
         </div>
+        </div>
+    </div>
+    <div class="row">
+ 
+    <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.ZipCode))
             {
@@ -109,9 +143,11 @@
                 <input type="text" placeholder="ZipCode" id="ZipCode">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fas fa-location-arrow" aria-hidden="true"></i>
         </div>
-        <div class="inputWithIcon">
+        </div>
+        <div class="col-md-6">
+            <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.Country))
             {
                 <input type="text" placeholder="Country" id="Country" value="@Model.User.Country">
@@ -121,9 +157,11 @@
                 <input type="text" placeholder="Country" id="Country">
             }
 
-            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    <i class="fas fa-flag" aria-hidden="true"></i>
         </div>
-
+        </div>
+    </div>
+ 
 
         <div class="radio">
             @if (!string.IsNullOrEmpty(Model.userId))

@@ -506,10 +506,12 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
     padding: 8px;
     box-sizing: border-box;
     transition: 0.3s;
+    font-size: 14px;
+    background: #f6f6f687;
 }
 
     .textbox-sec input[type="text"]:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.25);
     }
 
 .textbox-sec .inputWithIcon input[type="text"] {
@@ -524,12 +526,21 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
     padding: 8px;
     box-sizing: border-box;
     transition: 0.3s;
+    font-size: 14px;
+    background: #f6f6f687;
 }
 
     .textbox-sec input[type="password"]:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.25);
   
     }
+ .form-control:focus {
+    box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.25);
+}
+  
+        .textbox-sec textarea:focus {
+    box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.25);
+}
 
 .textbox-sec .inputWithIcon input[type="password"] {
     padding-left: 30px;
@@ -909,4 +920,35 @@ select::-ms-expand {
   pointer-events: all;
   -webkit-animation-name: fade_In-permitModal;
           animation-name: fade_In-permitModal;
+}
+
+.address-textarea {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px 8px 8px 30px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: normal;
+    height: 100px;
+    background: #f6f6f687;
+}
+
+    .address-textarea::placeholder {
+        color: #999; /* Set to something visible */
+        opacity: 1;
+        font-size: 1rem;
+    }
+
+.user-activity .inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    padding: 9px 8px;
+    color: #aaa;
+    transition: 0.3s;
+    font-size: 15px;
 }
