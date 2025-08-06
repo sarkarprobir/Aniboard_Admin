@@ -2,7 +2,16 @@
 <div class="col-md-12 user-activity">
     <div class="textbox-sec">
         <div class="row">
-            <div class="col-md-6">
+     
+
+        </div>
+
+        <div class="row"> 
+
+
+            <div class="col-md-6"> 
+
+
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.FirstName))
             {
@@ -33,7 +42,7 @@
         </div>
  
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.Email))
             {
@@ -47,6 +56,14 @@
                     <i class="fa fa-envelope "  aria-hidden="true"></i>
         </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="inputWithIcon">
+                    <input type="text" placeholder="Second Email" id="" value="Second Email">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </div>
+            </div>
+
                
     </div>
 
@@ -130,8 +147,7 @@
         </div>
         </div>
     </div>
-    <div class="row">
- 
+    <div class="row mb-2"> 
     <div class="col-md-6">
         <div class="inputWithIcon">
             @if (!string.IsNullOrEmpty(Model.User.ZipCode))
@@ -143,7 +159,7 @@
                 <input type="text" placeholder="ZipCode" id="ZipCode">
             }
 
-                    <i class="fas fa-location-arrow" aria-hidden="true"></i>
+          <i class="fas fa-location-arrow" aria-hidden="true"></i>
         </div>
         </div>
         <div class="col-md-6">
@@ -161,7 +177,7 @@
         </div>
         </div>
     </div>
- 
+       
 
         <div class="radio">
             @if (!string.IsNullOrEmpty(Model.userId))
@@ -196,6 +212,8 @@
         </div>
         <button class="btn btn-primary btn-round-2" onclick="javascript:saveuserdata();">Submit</button>
         <input type="hidden" id="userId" value="@Model.userId" />
+
+        
     </div>
 </div>
 <script src="/js/pages/AddEditUser.js" asp-append-version="true"></script>

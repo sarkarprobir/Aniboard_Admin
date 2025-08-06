@@ -12,11 +12,12 @@
   margin: 0;
   padding: 0;
 }
- 
+
 body {
     background-color: #f9f9f9;
     padding: 0px;
     margin: 0px;
+    font-size: 14px;
 }
 #sidebar {
   box-sizing: border-box; 
@@ -208,40 +209,67 @@ body {
     padding: 8px;
     border: 0px solid #ffffff;
 }
-h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}	
+h2.title{font-size:20px; margin-bottom:20px; width:auto; font-weight:500; float:left; }	
 .logo{width:100%; text-align:left;}
 #sidebar ul li.active > a,
 #sidebar ul li.active > button {
-    background-color: #4c4e9a;
+    background-color: #4d4d4d;
     color: #fff;
-    
+}
+.search-all {position:relative; float:right; width:200px;
+}
+    .search-all .form-control {font-size:14px;
+    }
+    .search-all button {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        border: 0px;
+        padding: 6px 10px;
+       
+        border-radius: 0px 4px 4px 0px;
+    }
+    #sidebar ul li .sub-menu li.active a {
+        background-color: #4d4d4d;
+        color: #fff;
+    }
+.sub-menu {display: none; list-style: none; padding-left: 20px;}
+.sub-menu.show { display: block; position: absolute; top: 0px; top: 58px; }
+
+
+.form-control.select {
+    width: 200px;
+    float: right;
+    border: 1px solid #ccc !important;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 4px 10px;
+    height: 33px !Important;
+    line-height: 11px;
+    font-size: 14px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="20" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+/*pagenation-----------------------------------------------------*/
+.page-header {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: normal;
+    border-bottom: 1px solid #ddd;
+    margin: 30px 0px;
 }
 
-#sidebar ul li .sub-menu li.active a { background-color: #4c4e9a; color: #fff;}
-.sub-menu {display: none; list-style: none; padding-left: 20px;}
-    .sub-menu.show {
-        display: block;
-        position: absolute;
-        top: 0px;
-        top: 58px;
-    }
-
-/*pagenation------------------------------------------------------*/
-
-.page-header {
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: normal;
-  border-bottom: 1px solid #ddd;
-  margin: 30px 0px;}
 #pagination {
   margin: 0;
   padding: 0;
   text-align: center
 }
+
 #pagination li {
   display: inline
 }
+
 #pagination li a {
   display: inline-block;
   text-decoration: none;
@@ -455,8 +483,9 @@ h2.title{font-size:20px; margin-bottom:20px; width:100%; font-weight:500;}
 }
 
 .btn-primary {
-  background: #3498db;
-  color: #ffffff;
+    background:#4c4e9a;
+    color: #ffffff;
+    font-size:14px;
 }
 
 .btn-primary:hover {
@@ -748,11 +777,13 @@ select::-ms-expand {
         right:13px;
         top: 1px;
         border: 0;
-        padding: 6px 10px;
+        padding: 7.5px 10px;
         border-radius:0px 2px 2px 0px;
     }
 .search-add {
-    padding: 7px;
+    padding: 6px 15px;
+    float:right;
+    font-size:14px;
 }
 
 .leftarrow-icon {
@@ -818,7 +849,10 @@ select::-ms-expand {
         font-size: 16px;
     }
 
-    .textbox-icon .form-control { padding-left:35px; font-size:14px;
+    .textbox-icon .form-control {
+        padding-left: 35px;
+        font-size: 14px;
+        background: #fafafa;
     }
 .table-style .action  a{ margin-right:25px; text-decoration:none;
 }
@@ -933,7 +967,7 @@ select::-ms-expand {
     transition: 0.3s;
     font-size: 14px;
     font-weight: normal;
-    height: 100px;
+    height: 60px;
     background: #f6f6f687;
 }
 
@@ -952,3 +986,79 @@ select::-ms-expand {
     transition: 0.3s;
     font-size: 15px;
 }
+
+#Edit_static_content .modal__content {
+    width: 80% !important;
+}
+#Edit_FAQ .textbox-icon i {
+    top: 21px;
+}
+#Edit_FAQ .textbox-icon .question {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px 8px 8px 30px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: normal;
+    height: 50px;
+    background: #fafafa;
+}
+
+#Edit_FAQ .textbox-icon .Answer {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px 8px 8px 30px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: normal;
+    height: 200px;
+    background: #fafafa;
+    ;
+}
+
+
+.user-payment table {
+    overflow: scroll;
+}
+
+.table-scroll-container {
+    overflow-x: auto;
+    width: 100%;
+    border: 0px solid #ddd;
+    padding:0px;
+}
+
+.table-style {
+    width: max-content;
+    border-collapse: collapse;
+    min-width: 100%;}
+#User_Paymeny_Add .textbox-icon {margin-bottom:15px;}
+#User_Paymeny_Add .radioGroup {padding:0px;}
+#User_Paymeny_Add .textbox-icon .question {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 0px 0;
+    outline: none;
+    padding: 8px 8px 8px 30px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: normal;
+    height: 100px;
+    background: #f6f6f687;
+}
+
+/*last update-06052025*/
+
+.table-style tr th:last-child {width:100px; text-align:center;}
+.table-style tr td:last-child { width: 100px; text-align: center;}
+.table-style tr td:last-child a {margin:5px;}

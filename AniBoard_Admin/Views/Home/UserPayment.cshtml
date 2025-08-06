@@ -1,0 +1,257 @@
+﻿<div class="container" style="padding:15px;">
+    <div class="row">
+        <div class="col-md-12 mb-2">
+
+            <h2 class="title">
+               User Payment
+            </h2>
+            <div class="form-group search-all">
+
+                <input type="text" class="form-control" placeholder="Search" id="">
+                <button onclick="javascript:searchuser();">
+                    <span class="fa fa-search form-control-feedback"></span>
+                </button>
+                </div>
+        </div>
+    </div>
+    <div class="row mb-1">         
+        <div class="col-md-12">
+            <a class="btn btn-primary search-add" href="#User_Paymeny_Add ">+ Add Payment</a>
+            <a class="btn btn-primary search-add mx-2" href="#"#">Download User</a>
+            <select name="userType" class="form-control select" id="">
+                <option value=" ">All User</option>
+                <option value=" ">User 1</option>
+                <option value=" ">User 2</option>
+            </select>
+            <a class="btn btn-primary search-add mx-2" href="#" #">All Records</a>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-12 Mail-content-add-edit">
+            <div class=" table-scroll-container user-payment ">
+                <table class="table-style" cellspacing="0" cellpadding="15">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap">Id</th>
+                            <th class="text-nowrap"><a>User</a></th>
+                            <th class="text-nowrap" ><a>Email</a></th>
+                            <th class="text-nowrap"><a>Phone </a></th>
+                            <th class="text-nowrap"><a>Registration Date</a></th>
+                            <th data-th="heading">Payment Date</th>
+                            <th data-th="heading">Payment Type</th>
+                            <th data-th="heading">Pricing</th>
+                            <th data-th="heading">Subscription Type</th>
+                            <th data-th="heading">Menu Board Id</th> 
+                            <th data-th="heading">Invoice No.</th>
+                            <th data-th="heading">Order ID & Date</th>
+                            <th data-th="heading">Location</th>
+                            <th data-th="heading">Activity</th>
+                            <th class="text-nowrap"><a>Type </a></th> 
+                            <th class="text-nowrap"><a>Active </a></th> 
+                            <th class="text-nowrap"><a>Action</a></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td data-th="fromEmail">...</td>
+                            <td data-th="fromEmail">...</td>
+                            <td data-th="fromEmail">...<a href="#">Link#</a></td>
+                            <td data-th="fromEmail">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td> 
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td> 
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td>
+                            <td data-th="heading">...</td> 
+                            <td data-th="status">...</td> 
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td data-th="fromEmail">Id</td>
+                            <td data-th="fromEmail">User  </td>
+                            <td data-th="fromEmail">Email</td>
+                            <td data-th="fromEmail">Phone</td>
+                            <td data-th="heading"> Registration Date</td>
+                            <td data-th="heading"> Type</td> 
+                            <td data-th="heading"> Payment Date</td>
+                            <td data-th="heading"> Payment Type</td>
+                            <td data-th="heading"> Pricing</td>
+                            <td data-th="heading"> Subscription Type</td>
+                            <td data-th="heading"> Menu Board Id</td> 
+                            <td data-th="heading">Invoice No.</td>
+                            <td data-th="heading">Order ID & Date</td>
+                            <td data-th="heading">	Location</td>
+                            <td data-th="heading">	Activity</td> 
+                            <td data-th="status">Active</td> 
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td data-th="fromEmail">Id</td>
+                            <td data-th="fromEmail">User  </td>
+                            <td data-th="fromEmail">Email</td>
+                            <td data-th="fromEmail">Phone</td>
+                            <td data-th="heading"> Registration Date</td>
+                            <td data-th="heading"> Type</td>
+                            <td data-th="heading"> Payment Date</td>
+                            <td data-th="heading"> Payment Type</td>
+                            <td data-th="heading"> Pricing</td>
+                            <td data-th="heading"> Subscription Type</td>
+                            <td data-th="heading"> Menu Board Id</td>
+                            <td data-th="heading">Invoice No.</td>
+                            <td data-th="heading">Order ID & Date</td>
+                            <td data-th="heading">Location</td>
+                            <td data-th="heading">Activity</td> 
+                            <td data-th="status">Active</td> 
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+<div id="User_Paymeny_Add" class="modal">
+    <div class="modal__content">
+        <h2 class="mb-4 ">Add User Payment </h2>
+        <div class="row">
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-credit-card" style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Payment Type" class="form-control" id=" ">
+
+                </div>
+            </div>
+               <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-credit-card" style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Payment Method" class="form-control" id=" ">
+
+                </div>
+            </div>
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-user-tag" style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="User Id" class="form-control" id=" ">
+
+                </div>
+            </div>
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-envelope " style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="User Mail" class="form-control" id=" ">
+
+                </div>
+            </div>
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-tag " style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Menu ID" class="form-control" id=" ">
+
+                </div>
+            </div>
+
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-dollar " style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Menu Price" class="form-control" id=" ">
+
+                </div>
+            </div>
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+
+                    <textarea name="message" id="" placeholder="Comment" class="question"></textarea>
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+
+                </div>
+            </div>
+        
+
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-calendar" style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Payment Date" class="form-control" id=" ">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin:0px;">
+            <div class="radioGroup">
+                <label class="mr-3">Status :</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="Radios1" value="1" checked="">
+                    <label class="form-check-label" for="Radios1">
+                        Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="" value="0">
+                    <label class="form-check-label" for="Radios2">
+                        Inactive
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row Editor-buttom" style="margin:0px 0px 25px 0px;">
+            <button class="btn btn-primary btnSubmit btntextEditor">
+                Submit
+            </button>
+        </div>
+        <a href="#" class="modal__close">×</a>
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", function () {
+      const container = document.querySelector(".table-scroll-container");
+      const table = container.querySelector("table");
+
+      if (table.scrollWidth > container.clientWidth) {
+        console.log("Table is overflowing. Horizontal scroll enabled.");
+        // Optional: add a visual cue or styling
+      }
+    });
+</script>

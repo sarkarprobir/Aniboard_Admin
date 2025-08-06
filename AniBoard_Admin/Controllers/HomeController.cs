@@ -127,6 +127,32 @@ namespace AniBoard_Admin.Controllers
         {
             return View("ContentEmailAddEdit");
         }
+        public IActionResult ContentStatic()
+        {
+            return View("ContentStatic");
+        }
+        public IActionResult FAQ()
+        {
+            return View("FAQ");
+        }
+        public IActionResult UserPayment()
+        {
+            return View("UserPayment");
+        }
+        public IActionResult Dashboard()
+        {
+            return View("Dashboard");
+        }
+        public IActionResult Elements()
+        {
+            return View("Elements");
+        }
+        public IActionResult Background()
+        {
+            return View("Background");
+        }
+
+        
     }
 
 

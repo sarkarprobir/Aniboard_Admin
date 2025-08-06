@@ -1,0 +1,186 @@
+﻿ <div class="container" style="padding:15px;">
+    <div class="row">
+        <div class="col-md-12 mb-2">
+
+            <h2 class="title">
+               FAQ
+            </h2>
+            <div class="form-group search-all">
+                <input type="text" class="form-control" placeholder="Search" id="">
+                <button onclick="javascript:searchuser();">
+                    <span class="fa fa-search form-control-feedback"></span>
+                </button>
+                </div>
+        </div>
+    </div>
+    <div class="row ">
+        
+        <div class="col-md-12">
+            <a class="btn btn-primary search-add" href="#Edit_FAQ">+ Add Content</a>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-md-12 Mail-content-add-edit">
+            <div class=" table-scroll-container">
+                <table class="table-style" cellspacing="0" cellpadding="15">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap">
+                                <a>
+                                    Display Order
+                                </a>
+                            </th>
+                            <th class="text-nowrap"><a>Question</a></th>
+                            <th class="text-nowrap" width="500px"><a>Answer </a></th>
+                            <th class="text-nowrap"><a>Status </a></th>
+                            <th class="text-nowrap"><a>Action </a></th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td data-th="fromEmail">Page Name</td>
+
+                            <td data-th="heading">What is Lorem Ipsum?</td>
+                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                            <td data-th="status">Active</td>
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td data-th="fromEmail">Page Name</td>
+
+                            <td data-th="heading">What is Lorem Ipsum?</td>
+                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                            <td data-th="status">Active</td>
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td data-th="fromEmail">Page Name</td>
+
+                            <td data-th="heading">What is Lorem Ipsum?</td>
+                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                            <td data-th="status">Active</td>
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td data-th="fromEmail">Page Name</td>
+
+                            <td data-th="heading">What is Lorem Ipsum?</td>
+                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                            <td data-th="status">Active</td>
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Edit_FAQ" class="modal ">
+    <div class="modal__content">
+        <h2 class="mb-4 ">Add FAQ</h2>
+        <div class="row">
+
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+
+                    <textarea name="message" id="" placeholder="Question" class="question"></textarea>
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                     
+                </div>
+            </div>
+
+            <!-- form Fild -->
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-reply" aria-hidden="true"></i>
+                    <textarea name="message" id="" placeholder="Answer" class="Answer"></textarea>
+
+                </div>
+            </div>
+
+            <div class="col-xl-12 ">
+                <div class=" fildHolder textbox-icon">
+                    <i class="fa fa-header " style="top:9px;" aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Heading" class="form-control" id=" ">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin:0px;">
+            <div class="radioGroup">
+                <label class="mr-3">Status :</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="Radios1" value="1" checked="">
+                    <label class="form-check-label" for="Radios1">
+                        Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="" value="0">
+                    <label class="form-check-label" for="Radios2">
+                        Inactive
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row Editor-buttom" style="margin:0px 0px 25px 0px;">
+            <button class="btn btn-primary btnSubmit btntextEditor">
+                Submit
+            </button>
+        </div>
+        <a href="#" class="modal__close">×</a>
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", function () {
+      const container = document.querySelector(".table-scroll-container");
+      const table = container.querySelector("table");
+
+      if (table.scrollWidth > container.clientWidth) {
+        console.log("Table is overflowing. Horizontal scroll enabled.");
+        // Optional: add a visual cue or styling
+      }
+    });
+</script>

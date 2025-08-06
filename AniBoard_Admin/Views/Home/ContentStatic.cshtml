@@ -1,0 +1,184 @@
+﻿<div class="container" style="padding:15px;">
+    <div class="row">
+        <div class="col-md-12 mb-2">
+
+            <h2 class="title">
+              Static Content
+            </h2>
+            <div class="form-group search-all">
+                <input type="text" class="form-control" placeholder="Search" id="">
+                <button onclick="javascript:searchuser();">
+                    <span class="fa fa-search form-control-feedback"></span>
+                </button>
+                </div>
+        </div>
+    </div>
+    <div class="row">        
+        <div class="col-md-12">
+            <a class="btn btn-primary search-add" href="#Edit_static_content">+ Add Content</a>
+        </div>
+    </div> 
+
+    <div class="row mt-1">
+        <div class="col-md-12 Mail-content-add-edit">
+            <div class="content-card">
+                <table class="table-style" cellspacing="0" cellpadding="15">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap"><a>Page</a></th>
+                            <th class="text-nowrap"><a>Heading</a></th> 
+                            <th class="text-nowrap"><a>Status </a></th>
+                            <th class="text-nowrap"><a>Action </a></th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-th="fromEmail">Page Name</td>
+                            <td data-th="heading">Deactivation Notice</td>                         
+                            <td data-th="status">Active</td>
+                            <td data-th="action" class="action">
+                                <a href="" class="tableIcon info-tooltip">
+                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                </a>
+                                <a role="button" href="">
+                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                </a>
+                            </td>                            
+                        </tr>           
+                      </tbody>
+                </table>
+        
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="Edit_static_content" class="modal ">
+    <div class="modal__content">
+        <h2 class="mb-4 ">Add Static Content</h2>
+        <div class="row">
+
+            <div class="col-xl-3 ">
+                <div class="mb-4 fildHolder textbox-icon">
+                    @*       <label for="fromEmail" class="form-label">From Email</label> *@
+                    <input type="text" name="fromEmail" placeholder="Page Name" class="form-control" id="">
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    <input type="hidden" name="hidId" class="form-control" id="">
+                    <div class="invalid-feedback" id="invalidEmail"></div>
+                </div>
+            </div>
+
+            <!-- form Fild -->
+            <div class="col-xl-6 ">
+                <div class="mb-4 fildHolder textbox-icon">
+                    <i class="fa fa-header " aria-hidden="true"></i>
+                    <input type="text" name="heading" placeholder="Heading" class="form-control" id=" ">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!---customEditor start-->
+                <div class="customEditor">
+                    <div class="fildHolder customEditor ">
+                        <div class="toolbar">
+                            <div>
+                                <a class="btn" data-command="undo"><i class="fa fa-undo"></i></a>
+                                <a class="btn" data-command="redo"><i class="fa fa-repeat"></i></a>
+                            </div>
+                            <div>
+                                <div class="fore-wrapper btn">
+                                    <i class="fa fa-font" style="color:#ffc107;"></i>
+                                    <div class="fore-palette">
+                                        <a class="palette-item" data-command="forecolor" data-value="#000000" style="background-color:#000000;"></a><a class="palette-item" data-command="forecolor" data-value="#FF9966" style="background-color:#FF9966;"></a><a class="palette-item" data-command="forecolor" data-value="#6699FF" style="background-color:#6699FF;"></a><a class="palette-item" data-command="forecolor" data-value="#99FF66" style="background-color:#99FF66;"></a><a class="palette-item" data-command="forecolor" data-value="#CC0000" style="background-color:#CC0000;"></a><a class="palette-item" data-command="forecolor" data-value="#00CC00" style="background-color:#00CC00;"></a><a class="palette-item" data-command="forecolor" data-value="#0000CC" style="background-color:#0000CC;"></a><a class="palette-item" data-command="forecolor" data-value="#333333" style="background-color:#333333;"></a><a class="palette-item" data-command="forecolor" data-value="#0066FF" style="background-color:#0066FF;"></a><a class="palette-item" data-command="forecolor" data-value="#FFFFFF" style="background-color:#FFFFFF;"></a>
+                                    </div>
+                                </div>
+                                <div class="back-wrapper btn">
+                                    <i class="fa fa-font" style="background:#ffc107;"></i>
+                                    <div class="back-palette">
+                                        <a class="palette-item" data-command="backcolor" data-value="#000000" style="background-color:#000000;"></a><a class="palette-item" data-command="backcolor" data-value="#FF9966" style="background-color:#FF9966;"></a><a class="palette-item" data-command="backcolor" data-value="#6699FF" style="background-color:#6699FF;"></a><a class="palette-item" data-command="backcolor" data-value="#99FF66" style="background-color:#99FF66;"></a><a class="palette-item" data-command="backcolor" data-value="#CC0000" style="background-color:#CC0000;"></a><a class="palette-item" data-command="backcolor" data-value="#00CC00" style="background-color:#00CC00;"></a><a class="palette-item" data-command="backcolor" data-value="#0000CC" style="background-color:#0000CC;"></a><a class="palette-item" data-command="backcolor" data-value="#333333" style="background-color:#333333;"></a><a class="palette-item" data-command="backcolor" data-value="#0066FF" style="background-color:#0066FF;"></a><a class="palette-item" data-command="backcolor" data-value="#FFFFFF" style="background-color:#FFFFFF;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="bold"><i class="fa fa-bold"></i></a>
+                                <a class="btn" data-command="italic"><i class="fa fa-italic"></i></a>
+                                <a class="btn" data-command="underline"><i class="fa fa-underline"></i></a>
+                                <a class="btn" data-command="strikeThrough"><i class="fa fa-strikethrough"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="justifyLeft"><i class="fa fa-align-left"></i></a>
+                                <a class="btn" data-command="justifyCenter"><i class="fa fa-align-center"></i></a>
+                                <a class="btn" data-command="justifyRight"><i class="fa fa-align-right"></i></a>
+                                <a class="btn" data-command="justifyFull"><i class="fa fa-align-justify"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="indent"><i class="fa fa-indent"></i></a>
+                                <a class="btn" data-command="outdent"><i class="fa fa-outdent"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="insertUnorderedList"><i class="fa fa-list-ul"></i></a>
+                                <a class="btn" data-command="insertOrderedList"><i class="fa fa-list-ol"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="h1">H1</a>
+                                <a class="btn" data-command="h2">H2</a>
+                                <a class="btn" data-command="p">P</a>
+                                <a class="btn" data-command="insertimage"><i class="fa fa-image"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="createlink"><i class="fa fa-link"></i></a>
+                                <a class="btn" data-command="unlink"><i class="fa fa-unlink"></i></a>
+                            </div>
+                            <div>
+                                <a class="btn" data-command="subscript"><i class="fa fa-subscript"></i></a>
+                                <a class="btn" data-command="superscript"><i class="fa fa-superscript"></i></a>
+                            </div>
+                            <div class="htmlEditor_opener">
+                                <a class="btn btn-primary" data-command="code"><i class="fa fa-code" aria-hidden="true"></i></a>
+                            </div>
+
+                        </div>
+                        <div class="editingArea editor" id="editor" contenteditable="">
+                        </div>
+
+                        <div class="d-none editorSroer" name="editorSroer1">
+                        </div>
+                    </div>
+
+                </div>
+                <!---custom Editor end-->
+
+            </div>
+        </div>
+        <div class="row" style="margin:0px;">
+            <div class="radioGroup">
+                <label class="mr-3">Status :</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="Radios1" value="1" checked="">
+                    <label class="form-check-label" for="Radios1">
+                      Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios1" id="" value="0">
+                    <label class="form-check-label" for="Radios2">
+                     Inactive
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row Editor-buttom" style="margin:0px 0px 25px 0px;">
+            <button class="btn btn-primary btnSubmit btntextEditor">
+                Submit
+            </button>
+        </div>
+              <a href="#" class="modal__close">×</a>
+        </div> 
+        </div>
+<script src="~/js/textEditor.js" asp-append-version="true"></script>

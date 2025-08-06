@@ -1,21 +1,17 @@
 ﻿<ul>
     <li>
-        <span class="logo">  <img src="/Images/logo-aniboard-white.png" alt="icon-log"  ></span>
-        <!-- <button onclick="toggleSidebar()" id="toggle-btn">
-           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-             <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
-           </svg>
-        </button>-->
+        <span class="logo">  <img src="/Images/logo-aniboard-white.png" alt="icon-log"  ></span>    
     </li>
 
     <li>
-        <button class="dropdown-btn blanklik">
-            Dashboard 
-        </button>
+        <a href="../Home/index">
+            <button class="dropdown-btn blanklik">
+           Dashboard
+            </button>
+        </a>
     </li>
     <li>
         <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-
             <span>User Activity</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                 <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
@@ -23,15 +19,14 @@
         </button>
         <ul class="sub-menu">
             <div>
-            <li><a href="/User/UserList">User</a></li>
-                <li><a href="#">User Payment</a></li>
+                <li><a href="/User/UserList">User</a></li>
+                <li><a href="../Home/UserPayment"> User Payment</a></li>
                 <li><a href="/AdminUser/AdminUserList">Admin User</a></li>
             </div>
         </ul>
     </li>
     <li>
         <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-
             <span>Slide Design</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                 <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"></path>
@@ -39,14 +34,13 @@
         </button>
         <ul class="sub-menu">
             <div>
-            <li><a href="#">Elements</a></li>
-            <li><a href="#">Back Ground</a></li>
+            <li><a href="../Home/Elements">Elements</a></li>
+            <li><a href="../Home/Background">Back Ground</a></li>
             </div>
         </ul>
     </li>
     <li>
         <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-
             <span>CMS Content</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                 <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
@@ -55,69 +49,29 @@
         <ul class="sub-menu">
             <div>
                 <li><a href="../Home/ContentEmailAddEdit">Email Content</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Static Content</a></li>
+                <li><a href="../Home/FAQ">FAQ</a></li>
+                <li><a href="../Home/ContentStatic">Static Content</a></li>
             </div>
         </ul>
-    </li>
-  
- 
-
+    </li> 
 </ul>
-<header class="dashboard-head"> 
-
+<header class="dashboard-head">
     <div class="right-login">
         <span href="#" class="button toggle-login">
             <img src="/Images/icon-log.png" alt="icon-log">
-        </span><!-- .button .toggle-login -->
-
+        </span><!--.button .toggle-login -->
         <div class="login">
             <div class="triangle"></div><!-- .triangle -->
-
             <ul>
                 <li><a href="/Home/Logout"> <img src="/Images/icon_sign_out.png" alt="icon-log">Sign out</a> </li>
                 <div class="clear"></div>
             </ul>
-
         </div><!--  .login -->
     </div><!-- .right -->
     <div class="clear"></div>
 </header>
 <div style="clear:both;"></div>
-@* 
-<script id="rendered-js">
-    const toggleButton = document.getElementById("toggle-btn");
-    const sidebar = document.getElementById("sidebar");
 
-    function toggleSidebar() {
-        sidebar.classList.toggle("close");
-        toggleButton.classList.toggle("rotate");
-
-        closeAllSubMenus();
-    }
-
-    function toggleSubMenu(button) {
-        if (!button.nextElementSibling.classList.contains("show")) {
-            closeAllSubMenus();
-        }
-
-        button.nextElementSibling.classList.toggle("show");
-        button.classList.toggle("rotate");
-
-        if (sidebar.classList.contains("close")) {
-            sidebar.classList.toggle("close");
-            toggleButton.classList.toggle("rotate");
-        }
-    }
-
-    function closeAllSubMenus() {
-        Array.from(sidebar.getElementsByClassName("show")).forEach(ul => {
-            ul.classList.remove("show");
-            ul.previousElementSibling.classList.remove("rotate");
-        });
-    }
-    //# sourceURL=pen.js
-</script> *@
 <script>
     // Toggle submenu and close others
     function toggleSubMenu(button) {
