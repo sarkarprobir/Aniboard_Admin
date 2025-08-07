@@ -16,7 +16,7 @@
     <div class="row">
      
         <div class="col-md-12">
-            <a class="btn btn-primary search-add" href="#Email-Add-Edit" onclick="javascript:showaddedit_modal(0);">+ Add Email Content</a>
+            <a class="btn btn-primary search-add" href="#Email-Add-Edit" @* onclick="javascript:showaddedit_modal(0);" *@>+ Add Email Content</a>
         </div>
     </div>
 
@@ -310,10 +310,11 @@
                             </div>
 
                         </div>
-                        <div class="editingArea editor" id="editor" contenteditable="">
-                        </div>
-
-                        <div class="d-none editorSroer" name="editorSroer1">
+                        <div class="editingArea editor" id='editor' contenteditable>
+                            @* @if (items.Count != 0)
+                            {
+                                @Html.Raw(items[0].content)
+                            } *@
                         </div>
                     </div>
 
@@ -350,3 +351,40 @@
 </div>
 
 <script src="~/js/textEditor.js" asp-append-version="true"></script>
+<script>
+    let isCodeView = false;
+
+    document.querySelector('[data-command="code"]').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const editor = document.getElementById('editor');
+
+        // Optional: if using textarea
+        let source = document.getElementById('sourceEditor');
+
+        if (!source) {
+            // Create textarea dynamically if not already present
+            source = document.createElement('textarea');
+            source.id = 'sourceEditor';
+            source.style.width = '100%';
+            source.style.height = '300px';
+            editor.parentNode.insertBefore(source, editor.nextSibling);
+        }
+
+        if (!isCodeView) {
+            // Switch to code view
+            source.value = editor.innerHTML.trim();
+            source.style.display = 'block';
+            editor.style.display = 'none';
+        } else {
+            // Switch back to editor view
+            editor.innerHTML = source.value.trim();
+            source.style.display = 'none';
+            editor.style.display = 'block';
+        }
+
+        isCodeView = !isCodeView;
+    });
+</script>
+
+

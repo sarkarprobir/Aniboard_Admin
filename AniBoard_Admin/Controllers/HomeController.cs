@@ -24,10 +24,6 @@ namespace AniBoard_Admin.Controllers
             return View();
         }
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -123,10 +119,7 @@ namespace AniBoard_Admin.Controllers
             }
             return View(dyLogin);
         } 
-        public IActionResult ContentEmailAddEdit()
-        {
-            return View("ContentEmailAddEdit");
-        }
+        
         public IActionResult ContentStatic()
         {
             return View("ContentStatic");
