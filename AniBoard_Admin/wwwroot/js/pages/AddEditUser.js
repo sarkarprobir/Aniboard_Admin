@@ -13,6 +13,7 @@ function saveuserdata() {
         FirstName: $('#firstName').val(),
         LastName: $('#lastName').val(),
         Email: $('#email').val(),
+        Email_2: $('#email_2').val(),
         Password: $('#userpassword').val(),
         PhoneNumber: $('#phone').val(),
         Address: $('#Address').val(),

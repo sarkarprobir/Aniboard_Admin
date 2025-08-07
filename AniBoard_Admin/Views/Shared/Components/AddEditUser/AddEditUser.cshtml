@@ -56,15 +56,19 @@
                     <i class="fa fa-envelope "  aria-hidden="true"></i>
         </div>
             </div>
-
             <div class="col-md-6">
                 <div class="inputWithIcon">
-                    <input type="text" placeholder="Second Email" id="" value="Second Email">
+                    @if (!string.IsNullOrEmpty(Model.User.Email_2))
+                    {
+                        <input type="text" placeholder="Second Email" id="email_2" value="@Model.User.Email_2">
+                    }
+                    else
+                    {
+                        <input type="text" placeholder="Second Email" id="email_2" value="Second Email">
+                    }
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                 </div>
-            </div>
-
-               
+            </div>   
     </div>
 
     <div class="row">   
@@ -103,7 +107,7 @@
             @if (!string.IsNullOrEmpty(Model.User.Address))
             {
                  @* <input type="text" placeholder="Address" id="Address" value="@Model.User.Address"> *@
-                        <textarea name="message" id="Address" value="@Model.User.Address" placeholder="Address" class="address-textarea "></textarea>
+                        <textarea name="message" id="Address" placeholder="Address" class="address-textarea ">@Model.User.Address</textarea>
             }
             else
             {

@@ -13,9 +13,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Workflow\Workflow.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Views\EmailContent\" />
-  </ItemGroup>
 
 </Project>
