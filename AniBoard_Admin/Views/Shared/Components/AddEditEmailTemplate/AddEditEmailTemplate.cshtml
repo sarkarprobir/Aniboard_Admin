@@ -1,0 +1,203 @@
+﻿<div class="row">
+    <!-- form Fild -->
+    <div class="col-xl-3 ">
+        <div class="mb-4 fildHolder textbox-icon">
+            @if (!string.IsNullOrEmpty(Model.emailTemplate.TemplateCode))
+            {
+                <input type="text" name="TemplateCode" placeholder="Template Code" class="form-control" id="TemplateCode" value="@Model.emailTemplate.TemplateCode">
+            }
+            else
+            {
+                <input type="text" name="TemplateCode" placeholder="Template Code" class="form-control" id="TemplateCode">
+            }
+            
+            <i class="fa fa-envelope " aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="col-xl-3 ">
+        <div class="mb-4 fildHolder textbox-icon">
+            <i class="fa fa-header " aria-hidden="true"></i>
+            @if (!string.IsNullOrEmpty(Model.emailTemplate.Heading))
+            {
+                <input type="text" name="Heading" placeholder="Heading" class="form-control" id="Heading" value="@Model.emailTemplate.Heading">
+            }
+            else
+            {
+                <input type="text" name="Heading" placeholder="Heading" class="form-control" id="Heading">
+            }
+            
+        </div>
+    </div>
+    <div class="col-xl-3 ">
+        <div class="mb-4 fildHolder textbox-icon">
+            <i class="fa fa-envelope " aria-hidden="true"></i>
+            @if (!string.IsNullOrEmpty(Model.emailTemplate.Remarks))
+            {
+                <input type="text" name="Remarks" placeholder="Email Code" class="form-control" id="Remarks" value="@Model.emailTemplate.Remarks">
+            }
+            else
+            {
+                <input type="text" name="Remarks" placeholder="Email Code" class="form-control" id="Remarks">
+            }
+            
+        </div>
+    </div>
+    <div class="col-xl-3 ">
+        <div class="mb-4 fildHolder textbox-icon">
+            <i class="fa fa-file-text " aria-hidden="true"></i>
+            @if (Model.emailTemplate.TemplateOrder != null)
+            {
+                <input type="text" name="TemplateOrder" placeholder="Template Order" class="form-control" id="TemplateOrder" value="@Model.emailTemplate.TemplateOrder">
+            }
+            else
+            {
+                <input type="text" name="TemplateOrder" placeholder="Template Order" class="form-control" id="TemplateOrder">
+            }
+            
+        </div>
+    </div>
+    
+
+    
+
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!---customEditor start-->
+        <div class="customEditor">
+            <div class="fildHolder customEditor ">
+                <div class="toolbar">
+                    <div>
+                        <a class="btn" data-command="undo"><i class="fa fa-undo"></i></a>
+                        <a class="btn" data-command="redo"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <div>
+                        <div class="fore-wrapper btn">
+                            <i class="fa fa-font" style="color:#ffc107;"></i>
+                            <div class="fore-palette">
+                                <a class="palette-item" data-command="forecolor" data-value="#000000" style="background-color:#000000;"></a><a class="palette-item" data-command="forecolor" data-value="#FF9966" style="background-color:#FF9966;"></a><a class="palette-item" data-command="forecolor" data-value="#6699FF" style="background-color:#6699FF;"></a><a class="palette-item" data-command="forecolor" data-value="#99FF66" style="background-color:#99FF66;"></a><a class="palette-item" data-command="forecolor" data-value="#CC0000" style="background-color:#CC0000;"></a><a class="palette-item" data-command="forecolor" data-value="#00CC00" style="background-color:#00CC00;"></a><a class="palette-item" data-command="forecolor" data-value="#0000CC" style="background-color:#0000CC;"></a><a class="palette-item" data-command="forecolor" data-value="#333333" style="background-color:#333333;"></a><a class="palette-item" data-command="forecolor" data-value="#0066FF" style="background-color:#0066FF;"></a><a class="palette-item" data-command="forecolor" data-value="#FFFFFF" style="background-color:#FFFFFF;"></a>
+                            </div>
+                        </div>
+                        <div class="back-wrapper btn">
+                            <i class="fa fa-font" style="background:#ffc107;"></i>
+                            <div class="back-palette">
+                                <a class="palette-item" data-command="backcolor" data-value="#000000" style="background-color:#000000;"></a><a class="palette-item" data-command="backcolor" data-value="#FF9966" style="background-color:#FF9966;"></a><a class="palette-item" data-command="backcolor" data-value="#6699FF" style="background-color:#6699FF;"></a><a class="palette-item" data-command="backcolor" data-value="#99FF66" style="background-color:#99FF66;"></a><a class="palette-item" data-command="backcolor" data-value="#CC0000" style="background-color:#CC0000;"></a><a class="palette-item" data-command="backcolor" data-value="#00CC00" style="background-color:#00CC00;"></a><a class="palette-item" data-command="backcolor" data-value="#0000CC" style="background-color:#0000CC;"></a><a class="palette-item" data-command="backcolor" data-value="#333333" style="background-color:#333333;"></a><a class="palette-item" data-command="backcolor" data-value="#0066FF" style="background-color:#0066FF;"></a><a class="palette-item" data-command="backcolor" data-value="#FFFFFF" style="background-color:#FFFFFF;"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="bold"><i class="fa fa-bold"></i></a>
+                        <a class="btn" data-command="italic"><i class="fa fa-italic"></i></a>
+                        <a class="btn" data-command="underline"><i class="fa fa-underline"></i></a>
+                        <a class="btn" data-command="strikeThrough"><i class="fa fa-strikethrough"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="justifyLeft"><i class="fa fa-align-left"></i></a>
+                        <a class="btn" data-command="justifyCenter"><i class="fa fa-align-center"></i></a>
+                        <a class="btn" data-command="justifyRight"><i class="fa fa-align-right"></i></a>
+                        <a class="btn" data-command="justifyFull"><i class="fa fa-align-justify"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="indent"><i class="fa fa-indent"></i></a>
+                        <a class="btn" data-command="outdent"><i class="fa fa-outdent"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="insertUnorderedList"><i class="fa fa-list-ul"></i></a>
+                        <a class="btn" data-command="insertOrderedList"><i class="fa fa-list-ol"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="h1">H1</a>
+                        <a class="btn" data-command="h2">H2</a>
+                        <a class="btn" data-command="p">P</a>
+                        <a class="btn" data-command="insertimage"><i class="fa fa-image"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="createlink"><i class="fa fa-link"></i></a>
+                        <a class="btn" data-command="unlink"><i class="fa fa-unlink"></i></a>
+                    </div>
+                    <div>
+                        <a class="btn" data-command="subscript"><i class="fa fa-subscript"></i></a>
+                        <a class="btn" data-command="superscript"><i class="fa fa-superscript"></i></a>
+                    </div>
+                    <div class="htmlEditor_opener">
+                        <a class="btn btn-primary" data-command="code"><i class="fa fa-code" aria-hidden="true"></i></a>
+                    </div>
+
+                </div>
+                <div class="editingArea editor" id='editor' contenteditable>
+                    @if (!string.IsNullOrEmpty(Model.emailTemplate.Content))
+                    {
+                        @Html.Raw(Model.emailTemplate.Content)
+                    }
+                </div>
+            </div>
+
+        </div>
+        <!---customEditor end-->
+
+    </div>
+</div>
+
+<div class="row" style="margin:0px;">
+    <div class="radioGroup">
+        <label class="mr-3">Status:</label>
+        @if (Model.templateId > 0)
+        {
+            @if (Model.emailTemplate.IsActive == true)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio" id="radio_active" value="true" checked="">
+                    <label class="form-check-label" for="Radios1">
+                        Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio" id="radio_inactive" value="false">
+                    <label class="form-check-label" for="Radios2">
+                        Inactive
+                    </label>
+                </div>
+            }
+            else
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio" id="radio_active" value="true" >
+                    <label class="form-check-label" for="Radios1">
+                        Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio" id="radio_inactive" value="false" checked="">
+                    <label class="form-check-label" for="Radios2">
+                        Inactive
+                    </label>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="radio_active" value="true" checked="">
+                <label class="form-check-label" for="Radios1">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="radio_inactive" value="false">
+                <label class="form-check-label" for="Radios2">
+                    Inactive
+                </label>
+            </div>
+        }
+        
+    </div>
+</div>
+<input type="hidden" name="hdTemplateId" id="hdTemplateId" value="@Model.emailTemplate.TemplateId">
+<div class="row Editor-buttom" style="margin:0px 0px 25px 0px;">
+    <button class="btn btn-primary btnSubmit btntextEditor" onclick="javascript:saveemailtemplatedata();">
+        Submit
+    </button>
+</div>
+<script src="/js/textEditor.js" asp-append-version="true"></script>
+<script src="/js/pages/AddEditEmailTemplate.js" asp-append-version="true"></script>
