@@ -1,0 +1,34 @@
+﻿
+<div class="content-card">
+
+    <table class="table-style" cellspacing="0" cellpadding="15">
+        <thead>
+            <tr>
+                <th class="text-nowrap"><a>Thumbnail </a></th>
+                <th class="text-nowrap"><a>Image Name</a></th>
+                <th class="text-nowrap"><a>Size</a></th>
+                <th class="text-nowrap"><a>Action </a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.bgImage)
+            {
+                <tr>
+                    <td data-th="Thumbnail">
+                        <img src="@Model.imagePath@item.ImageNameThumb" style="width: 60px; margin:0px; border-radius:8px;" alt="@item.ImageName">
+                    </td>
+                    <td data-th="Image Name">@item.DisplayName</td>
+                    <td data-th="Size">@item.ImageW x @item.ImageH (@item.ImageSize KB)</td>
+                    <td data-th="action" class="action">
+                        <a class="tableIcon info-tooltip" href="#Background-Add-Edit" onclick="javascript:showaddeditbackgroundimage_modal(@item.ImageId);">
+                            <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                        </a>
+                        <a role="button" href="">
+                            <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                        </a>
+                    </td>
+                </tr>
+            }
+            
+    </table>
+</div>
