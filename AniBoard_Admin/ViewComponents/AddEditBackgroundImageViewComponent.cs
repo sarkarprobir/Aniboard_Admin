@@ -38,7 +38,7 @@ namespace AniBoard_Admin.ViewComponents
                 }
             }
             
-            string imagePath = _config["DynamicImageFolderPath"] + "/" + _config["BackgroudImageFolderName"];
+            string imagePath = "/dynamicimage/"  + _config["BackgroudImageFolderName"] + "/";
 
             dybgImage.bgImage = bgImage;
             dybgImage.imageId = imageId;

@@ -16,8 +16,9 @@ namespace AniBoard_Admin.ViewComponents
             _config = config;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string q = null, string pageNo = "1", string recordPerPage = "20")
+        public async Task<IViewComponentResult> InvokeAsync(string q = null, string pageNo = "1")
         {
+            string recordPerPage = _config["Recordsperpage"];
             List<BackgroundImage> bgImage = new List<BackgroundImage>();
             dynamic dybgImage = new ExpandoObject();
             // calling api

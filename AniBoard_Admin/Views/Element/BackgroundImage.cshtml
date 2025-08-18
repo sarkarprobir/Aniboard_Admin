@@ -25,7 +25,10 @@
             <a class="btn btn-primary search-add" href="#Background-Add-Edit" onclick="javascript:showaddeditbackgroundimage_modal(0);">+ Add Background</a>
         </div>
     </div>
-
+    @if (!string.IsNullOrEmpty(Model.paginationHtml))
+    {
+        
+    }
     <div class="row mt-1">
         <div class="col-md-12 Mail-content-add-edit" id="backgroundimagelisttable">
             @await Component.InvokeAsync("BackgroundImageList", new { q = Model.q })
@@ -89,21 +92,26 @@
                 </table> 
             </div> *@
         </div>
-        <div class="pagination">
-            <ul class="pagination pagination-sm">
-                <li class="page-item active"><a class="page-link" href="">1</a></li>
-                <li class="page-item"><a class="page-link" href="">2</a></li>
-                <li class="page-item "><a class="page-link" href="">3</a></li>
-                <li class="page-item"><a class="page-link" href="">4</a></li>
-                <li class="page-item "><a class="page-link" href="">5</a></li>
-                <li class="page-item"><a class="page-link" href="">6</a></li>
-                <li class="page-item"><a class="page-link" href=""><span>❯</span></a></li>
-                <li class="page-item"><a class="page-link" href=""><span>❯❯</span></a></li>
-                <li class="page-item numberbox" style="border-radius:0 !important">
-                    <input type="number" id="userPageInput" class="form-control" min="0" style="width: 67px;height: 32px;" max="2" value="1" fdprocessedid="eztwqn">
-                </li>
-            </ul>
-        </div>
+        @if (!string.IsNullOrEmpty(Model.paginationHtml))
+        {
+            <div class="pagination">
+                <ul class="pagination pagination-sm">
+                    @Html.Raw(Model.paginationHtml)
+                    @* <li class="page-item active"><a class="page-link" href="javascript:void(0);" onclick="javascript:gotopage(1);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="">2</a></li>
+                    <li class="page-item "><a class="page-link" href="">3</a></li>
+                    <li class="page-item"><a class="page-link" href="">4</a></li>
+                    <li class="page-item "><a class="page-link" href="">5</a></li>
+                    <li class="page-item"><a class="page-link" href="">6</a></li> *@
+                    @* <li class="page-item"><a class="page-link" href=""><span>❯</span></a></li>
+                    <li class="page-item"><a class="page-link" href=""><span>❯❯</span></a></li> *@
+                    <li class="page-item numberbox" style="border-radius:0 !important">
+                        <input type="number" id="userPageInput" class="form-control" min="1" style="width: 67px;height: 32px;" max="@Model.totalCount" value="1" onchange="javascript:pageInput();" fdprocessedid="eztwqn">
+                    </li>
+                </ul>
+            </div>
+        }
+        
     </div> 
 </div>
 <div id="Background-Add-Edit" class="modal">

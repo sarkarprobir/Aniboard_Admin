@@ -22,7 +22,8 @@ fileInput.addEventListener("change", function () {
 // 📌 Handle upload
 document.getElementById("uploadForm").addEventListener("submit", function (e) {
     e.preventDefault();
-
+    var imgId = document.getElementById("imageId").value;
+    var searchText = $('#backgroundimage_search').val();
     const formData = new FormData();
     formData.append("file", fileInput.files[0]);
     formData.append("imageId", document.getElementById("imageId").value);
@@ -41,9 +42,21 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
             return response.json();
         })
         .then(data => {
-            alert('Background image created sucessfully');
+            if (imgId > 0) {
+                alert('Background image updated sucessfully');
+            }
+            else {
+                alert('Background image created sucessfully');
+            }
+            
             setTimeout(function () {
-                window.location.href = '/Element/BackgroundImage';
+                if (searchText != null && searchText != '') {
+                    window.location.href = '/Element/BackgroundImage?q=' + searchText;
+                }
+                else {
+                    window.location.href = '/Element/BackgroundImage';
+                }
+                
             }, 1000);
         })
         .catch(err => {

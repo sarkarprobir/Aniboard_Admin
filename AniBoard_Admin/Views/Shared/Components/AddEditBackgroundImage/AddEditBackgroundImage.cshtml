@@ -28,14 +28,34 @@
                 <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
             </div>
             <div>
-                <label>Select Image:</label>
-                <input type="file" name="fileInput" id="fileInput" accept="image/*" required />
+                @if (Model.imageId > 0)
+                {
+                    <label>Replace Image:</label>
+                    <input type="file" name="fileInput" id="fileInput" accept="image/*" />
+                }
+                else
+                {
+                    <label>Select Image:</label>
+                    <input type="file" name="fileInput" id="fileInput" accept="image/*" required />
+                }
             </div>
-            <div id="previewContainer" style="margin-top:15px; display:none;">
-                <h4>Image Preview:</h4>
-                <img id="previewImage" src="" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
-                <p id="uploadStatus"></p>
-            </div>
+            @if (Model.imageId>0)
+            {
+                <div id="previewContainer" style="margin-top:15px;">
+                    <h4>Image Preview:</h4>
+                    <img id="previewImage" src="@Model.imagePath@Model.bgImage.ImageNameThumb" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
+                    <p id="uploadStatus">"Uploaded"</p>
+                </div>
+            }
+            else
+            {
+                <div id="previewContainer" style="margin-top:15px; display:none;">
+                    <h4>Image Preview:</h4>
+                    <img id="previewImage" src="" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
+                    <p id="uploadStatus"></p>
+                </div>
+            }
+            
             <button type="submit" class="btn btn-primary btn-round-2">Submit</button>
             <input type="hidden" id="imageId" name="imageId" value="@Model.imageId" />
         </form>

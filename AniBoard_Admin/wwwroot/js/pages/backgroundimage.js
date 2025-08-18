@@ -21,3 +21,37 @@ function showaddeditbackgroundimage_modal(imageId) {
         },
     });
 }
+
+function gotopage(pageno) {
+    var searchText = $('#backgroundimage_search').val();
+    if (pageno > 0) {
+        
+        $.ajax({
+            url: "/Element/ShowBackgroundImagelist",
+            type: "GET",
+            data: {
+                "q": searchText,
+                "pageNo": pageno
+            },
+            datatype: "json",
+            success: function (data) {
+                $("#backgroundimagelisttable").empty();
+                $("#backgroundimagelisttable").html(data);
+                document.querySelectorAll(".page-item").forEach(li => li.classList.remove("active"));
+                let activeLi = document.getElementById('page_' + pageno);
+                if (activeLi) {
+                    activeLi.classList.add("active");
+                }
+            },
+        });
+    }
+
+}
+function pageInput() {
+    var pageno = $('#userPageInput').val();
+    //alert(pageno);
+    if (pageno > 0) {
+        gotopage(pageno);
+    }
+
+}

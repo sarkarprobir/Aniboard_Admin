@@ -1,13 +1,14 @@
 ﻿using AniBoard_Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+//using static System.Net.Mime.MediaTypeNames;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing; // For Resize
 using System.Diagnostics;
 using System.Dynamic;
 using Workflow.Data;
 using Workflow.Service.Interface;
-//using static System.Net.Mime.MediaTypeNames;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Processing; // For Resize
 namespace AniBoard_Admin.Controllers
 {
     public class ElementController : Controller
@@ -22,8 +23,9 @@ namespace AniBoard_Admin.Controllers
             _config = config;
         }
         #region BackgroundImage
-        public async Task<IActionResult> BackgroundImage(string q = null, string pageNo = "1", string recordPerPage = "20")
+        public async Task<IActionResult> BackgroundImage(string q = null, string pageNo = "1")
         {
+            string recordPerPage = _config["Recordsperpage"];
             List<BackgroundImage> bgImage = new List<BackgroundImage>();
             dynamic dybgImage = new ExpandoObject();
             // calling api
@@ -42,9 +44,46 @@ namespace AniBoard_Admin.Controllers
                     bgImage = bgImageList.Data;
                 }
             }
+
+            //PaginationHtml start
+            int rowsPerpage = Convert.ToInt32(_config["Recordsperpage"]);
+            int totalCount = (int)bgImage.FirstOrDefault().TotalCount;
+            int iPageno = 0;
+            int iTotal = (int)Math.Ceiling((decimal)totalCount / rowsPerpage);
+            string paginationHtml = "";
+            if (totalCount > rowsPerpage)
+            {
+                while ( iTotal > iPageno) 
+                {
+                    iPageno++;
+                    if (iPageno==1)
+                    {
+                        paginationHtml = "<li class='page-item active' id='page_1'><a class='page-link' href='javascript:void(0);' onclick='javascript:gotopage(1);'>" + iPageno + "</a></li>";
+                    }
+                    else
+                    {
+                        paginationHtml = paginationHtml + "<li class='page-item' id='page_" + iPageno + "'><a class='page-link' href='javascript:void(0);' onclick='javascript:gotopage(" + iPageno + ");'>" + iPageno + "</a></li>";
+                    }
+                }
+            }
+            //end
+            dybgImage.paginationHtml = paginationHtml;
+            dybgImage.totalCount = iTotal;
             dybgImage.bgImage = bgImage;
             dybgImage.q = q;
             return View(dybgImage);
+        }
+        public IActionResult ShowBackgroundImagelist(string q = null, string pageNo = "1")
+        {
+            try
+            {
+                return ViewComponent("BackgroundImageList", new { q = q , pageNo = pageNo });
+            }
+            catch (Exception err)
+            {
+                //_sessionService.SetServerException(err);
+                return Redirect("/error/");
+            }
         }
         public IActionResult ShowAddEditBackgroundImageModal(int imageId = 0)
         {
