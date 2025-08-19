@@ -1,4 +1,4 @@
-﻿<div class="col-md-12">
+﻿<div class="col-md-12 background-img-upload">
     <div class="textbox-sec">
 
         
@@ -41,18 +41,22 @@
             </div>
             @if (Model.imageId>0)
             {
-                <div id="previewContainer" style="margin-top:15px;">
+                <div class="Img-preview-div">
+                <div id="previewContainer" class="img-previewContainer" style="margin-top:15px;">
                     <h4>Image Preview:</h4>
                     <img id="previewImage" src="@Model.imagePath@Model.bgImage.ImageNameThumb" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
                     <p id="uploadStatus">"Uploaded"</p>
                 </div>
+                 </div>
             }
             else
             {
-                <div id="previewContainer" style="margin-top:15px; display:none;">
+                 <div class="Img-preview-div">
+                <div id="previewContainer" class="img-previewContainer" style="margin-top:15px; display:none;">
                     <h4>Image Preview:</h4>
                     <img id="previewImage" src="" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
                     <p id="uploadStatus"></p>
+                </div>
                 </div>
             }
             
