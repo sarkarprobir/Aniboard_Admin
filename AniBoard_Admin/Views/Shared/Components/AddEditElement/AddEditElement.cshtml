@@ -1,0 +1,83 @@
+﻿<div class="col-md-12 background-img-upload">
+    <div class="textbox-sec">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="select">
+                <select name="CategoryId" id="CategoryId">
+                    @if (Model.elementId > 0)
+                    {
+                        @foreach (var item in Model.elementCategoriesList)
+                        {
+                            if (item.ElementId == Model.elementcls.CategoryId)
+                            {
+                                <option value="@item.ElementId" selected>@item.ElementName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.ElementId">@item.ElementName</option>
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        <option selected="" disabled="">Choose element category</option>
+                        @foreach (var item in Model.elementCategoriesList)
+                        {
+                            <option value="@item.ElementId">@item.ElementName</option>
+                        }
+                    }
+                    
+                    
+                </select>
+            </div>
+            <div class="inputWithIcon">
+                @if (!string.IsNullOrEmpty(Model.elementcls.ElementName))
+                {
+                    <input type="text" placeholder="Element name" id="elementName" name="elementName" value="@Model.elementcls.ElementName">
+                }
+                else
+                {
+                    <input type="text" placeholder="Element name" id="elementName" name="elementName">
+                }
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            </div>
+            <div>
+                @if (Model.elementId > 0)
+                {
+                    <label>Replace Image:</label>
+                    <input type="file" name="fileInput" id="fileInput" accept="image/*" />
+                }
+                else
+                {
+                    <label>Select Image:</label>
+                    <input type="file" name="fileInput" id="fileInput" accept="image/*" required />
+                }
+            </div>
+            @if (Model.elementId > 0)
+            {
+                <div class="Img-preview-div">
+                    <div id="previewContainer" class="img-previewContainer" style="margin-top:15px;">
+                        <h4>Image Preview:</h4>
+                        <img id="previewImage" src="@Model.imagePath@Model.elementcls.ImageNameThumb" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
+                        <p id="uploadStatus">"Uploaded"</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="Img-preview-div">
+                    <div id="previewContainer" class="img-previewContainer" style="margin-top:15px; display:none;">
+                        <h4>Image Preview:</h4>
+                        <img id="previewImage" src="" alt="Preview" style="max-width:150px; border:1px solid #ccc; padding:3px;" />
+                        <p id="uploadStatus"></p>
+                    </div>
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-round-2">Submit</button>
+            <input type="hidden" id="elementId" name="elementId" value="@Model.elementId" />
+        </form>
+
+    </div>
+</div>
+<script src="/js/pages/AddEditElement.js" asp-append-version="true"></script>
