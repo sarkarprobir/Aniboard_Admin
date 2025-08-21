@@ -136,10 +136,10 @@ namespace AniBoard_Admin.Controllers
         {
             return View("Dashboard");
         }
-        public IActionResult Elements()
-        {
-            return View("Elements");
-        }
+        //public IActionResult Elements()
+        //{
+        //    return View("Elements");
+        //}
         public IActionResult Background()
         {
             return View("Background");

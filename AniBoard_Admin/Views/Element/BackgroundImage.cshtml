@@ -25,10 +25,7 @@
             <a class="btn btn-primary search-add" href="#Background-Add-Edit" onclick="javascript:showaddeditbackgroundimage_modal(0);">+ Add Background</a>
         </div>
     </div>
-    @if (!string.IsNullOrEmpty(Model.paginationHtml))
-    {
-        
-    }
+    
     <div class="row mt-1">
         <div class="col-md-12 Mail-content-add-edit" id="backgroundimagelisttable">
             @await Component.InvokeAsync("BackgroundImageList", new { q = Model.q })
