@@ -1,10 +1,10 @@
 ﻿function searchbackgroundimage() {
     var searchText = $('#backgroundimage_search').val();
     if (searchText != null && searchText != '') {
-        window.location.href = '/Element/BackgroundImage?q=' + searchText;
+        window.location.href = '../Element/BackgroundImage?q=' + searchText;
     }
     else {
-        window.location.href = '/Element/BackgroundImage';
+        window.location.href = '../Element/BackgroundImage';
     }
 }
 
@@ -12,7 +12,7 @@ function showaddeditbackgroundimage_modal(imageId) {
     $("#backgroundimage_body").empty();
 
     $.ajax({
-        url: "/Element/ShowAddEditBackgroundImageModal",
+        url: "../Element/ShowAddEditBackgroundImageModal",
         type: "GET",
         data: { "imageId": imageId },
         datatype: "json",
@@ -27,7 +27,7 @@ function gotopage(pageno) {
     if (pageno > 0) {
         
         $.ajax({
-            url: "/Element/ShowBackgroundImagelist",
+            url: "../Element/ShowBackgroundImagelist",
             type: "GET",
             data: {
                 "q": searchText,
@@ -68,7 +68,7 @@ function deletebackgroundimage(imageId) {
 
         //uploadStatus.textContent = "Uploading...";
 
-        fetch("/Element/SaveBackgroundImage", {
+        fetch("../Element/SaveBackgroundImage", {
             method: "POST",
             body: formData
         })
@@ -84,10 +84,10 @@ function deletebackgroundimage(imageId) {
                 
                 setTimeout(function () {
                     if (searchText != null && searchText != '') {
-                        window.location.href = '/Element/BackgroundImage?q=' + searchText;
+                        window.location.href = '../Element/BackgroundImage?q=' + searchText;
                     }
                     else {
-                        window.location.href = '/Element/BackgroundImage';
+                        window.location.href = '../Element/BackgroundImage';
                     }
 
                 }, 1000);
