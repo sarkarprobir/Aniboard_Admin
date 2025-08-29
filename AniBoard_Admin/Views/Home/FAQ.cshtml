@@ -6,8 +6,15 @@
                FAQ
             </h2>
             <div class="form-group search-all">
-                <input type="text" class="form-control" placeholder="Search" id="">
-                <button onclick="javascript:searchuser();">
+                @if (!string.IsNullOrEmpty(Model.q))
+                {
+                    <input type="text" class="form-control" placeholder="Search" id="faq_search" value="@Model.q">
+                }
+                else
+                {
+                    <input type="text" class="form-control" placeholder="Search" id="faq_search">
+                }
+                <button onclick="javascript:searchfaq();">
                     <span class="fa fa-search form-control-feedback"></span>
                 </button>
                 </div>
@@ -16,7 +23,7 @@
     <div class="row ">
         
         <div class="col-md-12">
-            <a class="btn btn-primary search-add" href="#Edit_FAQ">+ Add Content</a>
+            <a class="btn btn-primary search-add" href="#FAQ-Add-Edit">+ Add FAQ</a>
         </div>
     </div>
     <div class="row mt-1">
@@ -32,78 +39,31 @@
                             </th>
                             <th class="text-nowrap"><a>Question</a></th>
                             <th class="text-nowrap" width="500px"><a>Answer </a></th>
-                            <th class="text-nowrap"><a>Status </a></th>
                             <th class="text-nowrap"><a>Action </a></th>
 
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td data-th="fromEmail">Page Name</td>
+                        @foreach (var item in Model.fAQs)
+                        {
+                            <tr>
+                                <td data-th="Display Order">@item.DisplayOrder</td>
+                                <td data-th="Question">@item.FaqQuestion</td>
+                                <td data-th="Answer">@item.FaqAnswer</td>
+                                <td data-th="Action" class="action">
+                                    <a href="" class="tableIcon info-tooltip">
+                                        <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                    </a>
+                                    <a role="button" href="">
+                                        <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
+                                    </a>
+                                </td>
 
-                            <td data-th="heading">What is Lorem Ipsum?</td>
-                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                            <td data-th="status">Active</td>
-                            <td data-th="action" class="action">
-                                <a href="" class="tableIcon info-tooltip">
-                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
-                                </a>
-                                <a role="button" href="">
-                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
-                                </a>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td data-th="fromEmail">Page Name</td>
-
-                            <td data-th="heading">What is Lorem Ipsum?</td>
-                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                            <td data-th="status">Active</td>
-                            <td data-th="action" class="action">
-                                <a href="" class="tableIcon info-tooltip">
-                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
-                                </a>
-                                <a role="button" href="">
-                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
-                                </a>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td data-th="fromEmail">Page Name</td>
-
-                            <td data-th="heading">What is Lorem Ipsum?</td>
-                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                            <td data-th="status">Active</td>
-                            <td data-th="action" class="action">
-                                <a href="" class="tableIcon info-tooltip">
-                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
-                                </a>
-                                <a role="button" href="">
-                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
-                                </a>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td data-th="fromEmail">Page Name</td>
-
-                            <td data-th="heading">What is Lorem Ipsum?</td>
-                            <td data-th="heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                            <td data-th="status">Active</td>
-                            <td data-th="action" class="action">
-                                <a href="" class="tableIcon info-tooltip">
-                                    <img src="../images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
-                                </a>
-                                <a role="button" href="">
-                                    <img src="../images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-edit">
-                                </a>
-                            </td>
-
-                        </tr>
-
+                            </tr>
+                        }
+                        
+                        
                     </tbody>
                 </table>
 
@@ -112,9 +72,9 @@
     </div>
 </div>
 
-<div id="Edit_FAQ" class="modal ">
+<div id="FAQ-Add-Edit" class="modal ">
     <div class="modal__content">
-        <h2 class="mb-4 ">Add FAQ</h2>
+        <h2 class="mb-4 ">FAQ</h2>
         <div class="row">
 
             <div class="col-xl-12 ">

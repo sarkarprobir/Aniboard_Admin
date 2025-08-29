@@ -1,5 +1,6 @@
 using AniBoard_Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using System.Dynamic;
 using Workflow.Data;
@@ -30,6 +31,7 @@ namespace AniBoard_Admin.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #region UserLogin
         public IActionResult Login()
         {
             dynamic dyLogin = new ExpandoObject();
@@ -118,16 +120,39 @@ namespace AniBoard_Admin.Controllers
                 
             }
             return View(dyLogin);
-        } 
-        
+        }
+        #endregion
+        #region FAQ
+        public async Task<IActionResult> FAQ(string q = null)
+        {
+            List<FAQ> fAQs = new List<FAQ>();
+            dynamic dyFAQ = new ExpandoObject();
+            // calling api
+            var queryParams = new Dictionary<string, string?>();
+            if (!string.IsNullOrEmpty(q))
+                queryParams["searchKeyword"] = q;
+
+
+            var FAQList = await _apiService.GetAsync<ApiResponse<List<FAQ>>>("Backoffice/FAQGet", queryParams);
+            if (FAQList != null)
+            {
+                if (FAQList.Data.Count > 0)
+                {
+                    fAQs = FAQList.Data;
+                }
+            }
+
+            dyFAQ.fAQs = fAQs;
+            dyFAQ.q = q;
+            return View(dyFAQ);
+        }
+
+        #endregion
         public IActionResult ContentStatic()
         {
             return View("ContentStatic");
         }
-        public IActionResult FAQ()
-        {
-            return View("FAQ");
-        }
+        
         public IActionResult UserPayment()
         {
             return View("UserPayment");

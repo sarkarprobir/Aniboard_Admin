@@ -8,7 +8,8 @@ namespace Workflow.Helper
 {
     public class Settings
     {
-        public static string apiBaseurl = "https://localhost:44340/api/";
+        //public static string apiBaseurl = "https://localhost:44340/api/";
+        public static string apiBaseurl = "https://aniboard.com/api/api/";
 
     }
 }

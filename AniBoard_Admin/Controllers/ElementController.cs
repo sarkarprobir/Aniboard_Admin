@@ -108,89 +108,102 @@ namespace AniBoard_Admin.Controllers
         [HttpPost()]
         public async Task<IActionResult> SaveBackgroundImage(IFormFile file, int imageId, string customName, int isDelete = 0)
         {
-            BackgroundImage bgImage = new BackgroundImage();
-            if (file != null )
+            try
             {
-                if (file.Length > 0)
+                BackgroundImage bgImage = new BackgroundImage();
+                if (file != null)
                 {
-                    var uploadPath = _config["DynamicImageFolderPath"] + "/" + _config["BackgroudImageFolderName"]; 
-                    if (!Directory.Exists(uploadPath))
+                    if (file.Length > 0)
                     {
-                        Directory.CreateDirectory(uploadPath);
-                    }
-
-                    var extension = Path.GetExtension(file.FileName);
-                    var filename=Path.GetFileNameWithoutExtension(file.FileName);
-                    // ✅ Generate unique base name
-                    string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    var baseFileName = !string.IsNullOrWhiteSpace(filename)
-                        ? $"{filename}_{timestamp}"
-                        : $"{Path.GetFileNameWithoutExtension(file.FileName)}_{timestamp}";
-
-                    var fileName = baseFileName + extension;
-                    bgImage.ImageName = fileName;
-                    var filePath = Path.Combine(uploadPath, fileName);
-
-                    // ✅ Save original image
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    var fileSizeBytes = new FileInfo(filePath).Length;
-                    var fileSizeKB = Math.Round((double)fileSizeBytes / 1024, 2);
-                    bgImage.ImageSize = fileSizeKB;
-                    // ✅ Get dimensions & create thumbnail
-                    string thumbFileName = baseFileName + "_thumb" + extension;
-                    bgImage.ImageNameThumb = thumbFileName;
-                    string thumbFilePath = Path.Combine(uploadPath, thumbFileName);
-                    int width, height;
-
-                    using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
-                    {
-                        width = image.Width;
-                        height = image.Height;
-
-                        using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
+                        var uploadPath = _config["DynamicImageFolderPath"] + "/" + _config["BackgroudImageFolderName"];
+                        if (!Directory.Exists(uploadPath))
                         {
-                            await thumbImage.SaveAsync(thumbFilePath);
+                            Directory.CreateDirectory(uploadPath);
                         }
+
+                        var extension = Path.GetExtension(file.FileName);
+                        var filename = Path.GetFileNameWithoutExtension(file.FileName);
+                        // ✅ Generate unique base name
+                        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                        var baseFileName = !string.IsNullOrWhiteSpace(filename)
+                            ? $"{filename}_{timestamp}"
+                            : $"{Path.GetFileNameWithoutExtension(file.FileName)}_{timestamp}";
+
+                        var fileName = baseFileName + extension;
+                        bgImage.ImageName = fileName;
+                        var filePath = Path.Combine(uploadPath, fileName);
+
+                        // ✅ Save original image
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        var fileSizeBytes = new FileInfo(filePath).Length;
+                        var fileSizeKB = Math.Round((double)fileSizeBytes / 1024, 2);
+                        bgImage.ImageSize = fileSizeKB;
+                        // ✅ Get dimensions & create thumbnail
+                        string thumbFileName = baseFileName + "_thumb" + extension;
+                        bgImage.ImageNameThumb = thumbFileName;
+                        string thumbFilePath = Path.Combine(uploadPath, thumbFileName);
+                        int width, height;
+
+                        using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
+                        {
+                            width = image.Width;
+                            height = image.Height;
+
+                            using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
+                            {
+                                await thumbImage.SaveAsync(thumbFilePath);
+                            }
+                        }
+                        bgImage.ImageH = height;
+                        bgImage.ImageW = width;
                     }
-                    bgImage.ImageH=height;
-                    bgImage.ImageW=width;
+
+                }
+
+                bgImage.DisplayName = customName;
+                bgImage.ImageId = imageId;
+                if (isDelete > 0)
+                {
+                    bgImage.isDelete = 1;
+                }
+                //return Ok(new
+                //{
+                //    fileName,
+                //    filePath = $"/uploads/{fileName}"
+                //});
+
+                var result = await _apiService.PostAsync<BackgroundImage, ApiResponse<BackgroundImage>>("Backoffice/SaveBackgroundImage", bgImage);
+
+                if (result?.Status == true)
+                {
+                    Console.WriteLine("Background Image created: " + result?.Message);
+                    return Json(new
+                    {
+                        Ok = true,
+                        Errors = ""
+                    });
+                }
+                else
+                {
+                    Console.WriteLine("Failed to create background image: " + result?.Message);
+                    return Json(new
+                    {
+                        Ok = false,
+                        Errors = result?.Message
+                    });
                 }
 
             }
 
-            bgImage.DisplayName = customName;
-            bgImage.ImageId = imageId;
-            if (isDelete>0)
+            catch (Exception err)
             {
-                bgImage.isDelete = 1;
-            }
-            //return Ok(new
-            //{
-            //    fileName,
-            //    filePath = $"/uploads/{fileName}"
-            //});
-
-            var result = await _apiService.PostAsync<BackgroundImage, ApiResponse<BackgroundImage>>("Backoffice/SaveBackgroundImage", bgImage);
-
-            if (result?.Status == true)
-            {
-                Console.WriteLine("Background Image created: " + result?.Message);
-                return Json(new
-                {
-                    Ok = true,
-                    Errors = ""
-                });
-            }
-            else
-            {
-                Console.WriteLine("Failed to create background image: " + result?.Message);
                 return Json(new
                 {
                     Ok = false,
-                    Errors = result?.Message
+                    Errors = err.Message
                 });
             }
 

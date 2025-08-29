@@ -30,14 +30,14 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
     formData.append("customName", document.getElementById("imageName").value);
 
     uploadStatus.textContent = "Uploading...";
-
-    fetch("/Element/SaveBackgroundImage", {
+    console.log(formData);
+    fetch("../Element/SaveBackgroundImage", {
         method: "POST",
         body: formData
     })
         .then(response => {
             if (!response.ok) {
-                alert(response.errmsg);
+                alert(response.Errors);
             } 
             return response.json();
         })
@@ -51,16 +51,16 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
             
             setTimeout(function () {
                 if (searchText != null && searchText != '') {
-                    window.location.href = '/Element/BackgroundImage?q=' + searchText;
+                    window.location.href = '../Element/BackgroundImage?q=' + searchText;
                 }
                 else {
-                    window.location.href = '/Element/BackgroundImage';
+                    window.location.href = '../Element/BackgroundImage';
                 }
                 
             }, 1000);
         })
         .catch(err => {
-            alert(err.message);
+            alert(err.Errors);
             //uploadStatus.textContent = "Error: " + err.message;
         });
 });

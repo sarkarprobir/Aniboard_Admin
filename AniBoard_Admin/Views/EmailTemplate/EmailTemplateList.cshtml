@@ -54,10 +54,10 @@
                                 <td data-th="Status">@item.IsActive</td>
                                 <td data-th="Action" class="action">
                                     <a class="tableIcon info-tooltip" href="#Email-Add-Edit" onclick="javascript:showaddedittemplate_modal(@item.TemplateId);">
-                                        <img src="/images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
+                                        <img src="~/images/ico-edit.png" style="width:16px; margin:0px;" alt="ico-edit">
                                     </a>
                                     <a role="button" href="javascript:void(0);" onclick="javascript:deleteemailtemplate(@item.TemplateId);">
-                                        <img src="/images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-delete">
+                                        <img src="~/images/ico-delete.png" style="width: 16px; margin:0px;" alt="ico-delete">
                                     </a>
                                 </td>
                             </tr>
@@ -90,4 +90,4 @@
     </div>
 </div>
 
-<script src="/js/pages/emailtemplate.js" asp-append-version="true"></script>
+<script src="~/js/pages/emailtemplate.js" asp-append-version="true"></script>

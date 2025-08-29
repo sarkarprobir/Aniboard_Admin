@@ -11,7 +11,7 @@
 
             
                 <div class="form" style="text-align:center">
-                    <img src="/Images/logo.png" alt="Logo">
+                    <img src="~/Images/logo.png" alt="Logo">
                         @if (!string.IsNullOrEmpty(Model.errMsg))
                         {
                             <div class="valitation" id="invalidMsg">@Model.errMsg</div>
@@ -68,7 +68,7 @@
             <!-- Forgot Password Panel -->
          
                 <div class="form" style="text-align:center">
-                    <img src="/Images/logo.png" alt="Logo">
+                    <img src="~/Images/logo.png" alt="Logo">
                     <h3>Reset Password</h3>
                     <input type="email" id="reset-email" class="form-control" placeholder=" Email" />
                     <button type="button" class="reset__button" onclick="sendReset()">Send Reset Link</button>
@@ -82,36 +82,7 @@
 </div>
 
 </div>
-<script src="/js/pages/login.js" asp-append-version="true"></script>
-@* <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script> *@
- 
-@* <script>
-    const formSlider = document.getElementById('form-slider');
-    const showForgot = document.getElementById('show-forgot');
-    const backToLogin = document.getElementById('back-to-login');
+<script src="~/js/pages/login.js" asp-append-version="true"></script>
 
-    showForgot.addEventListener('click', function (e) {
-      e.preventDefault();
-      formSlider.style.transform = 'translateX(-100%)';
-    });
-
-    backToLogin.addEventListener('click', function (e) {
-      e.preventDefault();
-      formSlider.style.transform = 'translateX(0%)';
-    });
-
-    document.querySelector('.toggle-password').addEventListener('click', function () {
-      const input = document.querySelector('#password-field');
-      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-      input.setAttribute('type', type);
-      this.classList.toggle('fa-eye');
-      this.classList.toggle('fa-eye-slash');
-    });
-
-    function sendReset() {
-      const email = document.getElementById('reset-email').value;
-      alert('Reset link sent to: ' + email);
-    }
-</script> *@
 
  
