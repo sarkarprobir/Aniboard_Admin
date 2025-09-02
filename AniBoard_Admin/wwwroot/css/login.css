@@ -33,7 +33,7 @@ body {
 .justify__space_between { display: flex; justify-content: space-between;align-items: center;}
 .forgot__password, .back-to-login {color: #979797;cursor: pointer;font-size: 14px;    text-decoration: none;}
 .toggle-password {position: absolute;right: 20px;top: 50%;transform: translateY(-50%);cursor: pointer;}
-img {width: 140px;margin-bottom: 20px;}
+/*img {width: 140px;margin-bottom: 20px;}*/
 .form-slide .form-control {background-color: #f4f4f4;}
 .form-slide h3 {font-size: 18px;}
 .justify__space_between {position: relative;}
