@@ -703,8 +703,14 @@ select::-ms-expand {
     padding:0px;
     border: 0px solid #ddd;
     border-radius: 6px;}
-	
- .content-card{ border-radius: 6px;  }	
+
+.content-card {
+    border-radius: 6px;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+ 
+}
   button:focus { outline: 0px dotted;  outline: 0px auto -webkit-focus-ring-color; }
   main{overflow-x:hidden; padding:0 20px; width:100%;}
 
@@ -1074,3 +1080,12 @@ select::-ms-expand {
 .background-img-upload label {font-weight: 500;font-size: 16px; margin-right:10px;}
 .inputWithIcon {margin-bottom: 10px;}
 .img-previewContainer p {margin: 0px;}
+
+.previewImage {
+    border: 1px solid #ccc;
+    padding: 3px;
+    height:100px;
+}
+
+.background-img-upload .select {width:100%;
+}
