@@ -1089,3 +1089,31 @@ select::-ms-expand {
 
 .background-img-upload .select {width:100%;
 }
+
+
+.pagination-container {position:absolute; bottom:0px; right:0px;
+}
+
+    .pagination-container .pagination li {
+        padding: 8px 0px;
+        margin-right: 2px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        width: 41px;
+        text-align: center;
+        cursor:pointer;
+   
+
+    }
+
+        .pagination-container .pagination li.active {
+            background: #000;
+            border: 1px solid #ccc;
+            color: #fff;
+        }
+
+        .pagination-container .pagination li.p-prev {border:0px; background:#ddd;        }
+        .pagination-container .pagination li.p-next {
+            border: 0px;
+            background: #ddd;
+        }
