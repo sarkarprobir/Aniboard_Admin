@@ -15,7 +15,7 @@ function showaddeditelement_modal(elementId) {
         url: "/Element/ShowAddEditElementModal",
         type: "GET",
         data: { "elementId": elementId },
-        datatype: "json",
+        datatype: "json", 
         success: function (data) {
             $("#element_body").html(data);
         },

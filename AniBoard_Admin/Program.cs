@@ -16,6 +16,15 @@ builder.Services.AddHttpClient<APIService>(client =>
     client.BaseAddress = new Uri(Settings.apiBaseurl); 
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
+builder.Services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(options =>
+{
+    // Set the maximum file size for all multipart bodies to 3 MB
+    options.MultipartBodyLengthLimit = 3145728;
+});
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 3145728; // 3 MB
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
