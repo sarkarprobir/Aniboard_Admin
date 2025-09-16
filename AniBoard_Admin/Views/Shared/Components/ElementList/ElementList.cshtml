@@ -15,7 +15,7 @@
             @foreach (var item in Model.elementcls)
             {
                 <tr>
-                    <td data-th="Thumbnail">
+                    <td data-th="Thumbnail" class="element-icons">
                         <img src="@Model.imagePath@item.ImageNameThumb" style="width: 60px; margin:0px; border-radius:8px;" alt="@item.ImageName" onerror="this.onerror=null; this.src='../images/no-image.png';">
                     </td>
                     <td data-th="Image Name">@item.ElementName</td>

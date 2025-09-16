@@ -294,104 +294,115 @@ namespace AniBoard_Admin.Controllers
         [HttpPost()]
         public async Task<IActionResult> SaveElement(IFormFile file, int elementId, string elementName, int categoryId, int isDelete = 0)
         {
-            Elementcls elementcls = new Elementcls();
-            int width = 0;
-            int height = 0;
-            if (file != null)
+            try
             {
-                
-                if (file.Length > 0)
+                Elementcls elementcls = new Elementcls();
+                int width = 0;
+                int height = 0;
+                if (file != null)
                 {
-                    var uploadPath = _config["DynamicImageFolderPath"] + "/" + _config["ElementFolderName"];
-                    if (!Directory.Exists(uploadPath))
-                    {
-                        Directory.CreateDirectory(uploadPath);
-                    }
 
-                    var extension = Path.GetExtension(file.FileName);
-                    var filename = Path.GetFileNameWithoutExtension(file.FileName);
-                    // ✅ Generate unique base name
-                    string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    var baseFileName = !string.IsNullOrWhiteSpace(filename)
-                        ? $"{filename}_{timestamp}"
-                        : $"{Path.GetFileNameWithoutExtension(file.FileName)}_{timestamp}";
-
-                    var fileName = baseFileName + extension;
-                    elementcls.ImageName = fileName;
-                    var filePath = Path.Combine(uploadPath, fileName);
-
-                    // ✅ Save original image
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    if (file.Length > 0)
                     {
-                        await file.CopyToAsync(stream);
-                    }
-                    var fileSizeBytes = new FileInfo(filePath).Length;
-                    var fileSizeKB = Math.Round((double)fileSizeBytes / 1024, 2);
-                    elementcls.ImageSize = fileSizeKB;
-                    // ✅ Get dimensions & create thumbnail
-                    string thumbFileName = baseFileName + "_thumb" + extension;
-                    elementcls.ImageNameThumb = thumbFileName;
-                    string thumbFilePath = Path.Combine(uploadPath, thumbFileName);
-                    
-                    (width, height) = ImageHelper.GetImageSize(filePath);
-                    if (extension == ".ico" || extension == ".svg")
-                    {
-                        // Just copy original file as thumbnail
-                        System.IO.File.Copy(filePath, thumbFilePath, overwrite: true);
-                    }
-                    else
-                    {
-                        using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
+                        var uploadPath = _config["DynamicImageFolderPath"] + "/" + _config["ElementFolderName"];
+                        if (!Directory.Exists(uploadPath))
                         {
-                            width = image.Width;
-                            height = image.Height;
-
-                            using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
-                            {
-                                await thumbImage.SaveAsync(thumbFilePath);
-                            }
+                            Directory.CreateDirectory(uploadPath);
                         }
-                        
+
+                        var extension = Path.GetExtension(file.FileName);
+                        var filename = Path.GetFileNameWithoutExtension(file.FileName);
+                        // ✅ Generate unique base name
+                        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                        var baseFileName = !string.IsNullOrWhiteSpace(filename)
+                            ? $"{filename}_{timestamp}"
+                            : $"{Path.GetFileNameWithoutExtension(file.FileName)}_{timestamp}";
+
+                        var fileName = baseFileName + extension;
+                        elementcls.ImageName = fileName;
+                        var filePath = Path.Combine(uploadPath, fileName);
+
+                        // ✅ Save original image
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        var fileSizeBytes = new FileInfo(filePath).Length;
+                        var fileSizeKB = Math.Round((double)fileSizeBytes / 1024, 2);
+                        elementcls.ImageSize = fileSizeKB;
+                        // ✅ Get dimensions & create thumbnail
+                        string thumbFileName = baseFileName + "_thumb" + extension;
+                        elementcls.ImageNameThumb = thumbFileName;
+                        string thumbFilePath = Path.Combine(uploadPath, thumbFileName);
+
+                        (width, height) = ImageHelper.GetImageSize(filePath);
+                        if (extension == ".ico" || extension == ".svg")
+                        {
+                            // Just copy original file as thumbnail
+                            System.IO.File.Copy(filePath, thumbFilePath, overwrite: true);
+                        }
+                        else
+                        {
+                            using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
+                            {
+                                width = image.Width;
+                                height = image.Height;
+
+                                using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
+                                {
+                                    await thumbImage.SaveAsync(thumbFilePath);
+                                }
+                            }
+
+                        }
+
                     }
-                        
+
+                }
+                if (elementId > 0)
+                {
+                    elementcls.ElementId = elementId;
+                }
+                elementcls.ImageH = height;
+                elementcls.ImageW = width;
+                elementcls.CategoryId = categoryId;
+                elementcls.ElementName = elementName;
+                elementcls.ElementId = elementId;
+                if (isDelete > 0)
+                {
+                    elementcls.isDelete = 1;
                 }
 
-            }
-            if (elementId>0)
-            {
-                elementcls.ElementId = elementId;
-            }
-            elementcls.ImageH = height;
-            elementcls.ImageW = width;
-            elementcls.CategoryId = categoryId;
-            elementcls.ElementName = elementName;
-            elementcls.ElementId = elementId;
-            if (isDelete > 0)
-            {
-                elementcls.isDelete = 1;
-            }
-            
+                var result = await _apiService.PostAsync<Elementcls, ApiResponse<Elementcls>>("Backoffice/SaveElement", elementcls);
 
-            var result = await _apiService.PostAsync<Elementcls, ApiResponse<Elementcls>>("Backoffice/SaveElement", elementcls);
-
-            if (result?.Status == true)
-            {
-                Console.WriteLine("Element Image created: " + result?.Message);
-                return Json(new
+                if (result?.Status == true)
                 {
-                    Ok = true,
-                    Errors = ""
-                });
+                    Console.WriteLine("Element Image created: " + result?.Message);
+                    return Json(new
+                    {
+                        Ok = true,
+                        Errors = ""
+                    });
+                }
+                else
+                {
+                    Console.WriteLine("Failed to create element image: " + result?.Message);
+                    return Json(new
+                    {
+                        Ok = false,
+                        Errors = result?.Message
+                    });
+                }
             }
-            else
+            catch (Exception err)
             {
-                Console.WriteLine("Failed to create element image: " + result?.Message);
                 return Json(new
                 {
                     Ok = false,
-                    Errors = result?.Message
+                    Errors = err?.Message
                 });
             }
+            
 
 
         }
