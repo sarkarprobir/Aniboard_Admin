@@ -16,7 +16,7 @@ namespace AniBoard_Admin.ViewComponents
         }
 
 
-        public async Task<IViewComponentResult> InvokeAsync(string q = null, string pageNo = "1")
+        public async Task<IViewComponentResult> InvokeAsync(string q = null, string categoryId = null, string pageNo = "1")
         {
             string recordPerPage = _config["Recordsperpage"];
             List<Elementcls> elementcls = new List<Elementcls>();
@@ -27,6 +27,8 @@ namespace AniBoard_Admin.ViewComponents
             queryParams["recordPerPage"] = recordPerPage;
             if (!string.IsNullOrEmpty(q))
                 queryParams["searchKeyword"] = q;
+            if (!string.IsNullOrEmpty(categoryId))
+                queryParams["categoryId"] = categoryId;
 
             var elementList = await _apiService.GetAsync<ApiResponse<List<Elementcls>>>("Backoffice/ElementGet", queryParams);
             if (elementList != null)

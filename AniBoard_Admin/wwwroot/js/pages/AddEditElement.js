@@ -24,15 +24,16 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
     e.preventDefault();
     var imgId = document.getElementById("elementId").value;
     var searchText = $('#element_search').val();
+    var catId = $('#CategoryId').val();
     const formData = new FormData();
     formData.append("file", fileInput.files[0]);
     formData.append("elementId", imgId);
     formData.append("elementName", document.getElementById("elementName").value);
     formData.append("categoryId", document.getElementById("CategoryId").value);
-
+    formData.append("imageTag", document.getElementById("imageTag").value);
     uploadStatus.textContent = "Uploading...";
 
-    fetch("/Element/SaveElement", {
+    fetch("../Element/SaveElement", {
         method: "POST",
         body: formData
     })
@@ -43,21 +44,28 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
             return response.json();
         })
         .then(data => {
-            if (imgId > 0) {
-                alert('Element updated sucessfully');
+            console.log(data);
+            if (data.ok == false) {
+                alert(data.errors);
             }
             else {
-                alert('Element created sucessfully');
-            }
-
-            setTimeout(function () {
-                if (searchText != null && searchText != '') {
-                    window.location.href = '/Element/Elements?q=' + searchText;
+                if (imgId > 0) {
+                    alert('Element updated sucessfully');
                 }
                 else {
-                    window.location.href = '/Element/Elements';
+                    alert('Element created sucessfully');
                 }
+            }
 
+
+            setTimeout(function () {
+                //if (searchText != null && searchText != '') {
+                    window.location.href = '../Element/Elements?categoryId=' + catId +'&q=' + searchText;
+                //}
+                //else {
+                //    window.location.href = '../Element/Elements';
+                //}
+                 
             }, 1000);
         })
         .catch(err => {
@@ -65,3 +73,4 @@ document.getElementById("uploadForm").addEventListener("submit", function (e) {
             //uploadStatus.textContent = "Error: " + err.message;
         });
 });
+

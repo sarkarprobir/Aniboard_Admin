@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 //using static System.Net.Mime.MediaTypeNames;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.Processing; // For Resize
 using System.Diagnostics;
 using System.Dynamic;
@@ -213,7 +215,7 @@ namespace AniBoard_Admin.Controllers
 
         #endregion
         #region Element
-        public async Task<IActionResult> Elements(string q = null, string pageNo = "1")
+        public async Task<IActionResult> Elements(string q = null, string categoryId = null, string pageNo = "1")
         {
             string recordPerPage = _config["Recordsperpage"];
             List<Elementcls> elementcls = new List<Elementcls>();
@@ -224,7 +226,8 @@ namespace AniBoard_Admin.Controllers
             queryParams["recordPerPage"] = recordPerPage;
             if (!string.IsNullOrEmpty(q))
                 queryParams["searchKeyword"] = q;
-
+            if (!string.IsNullOrEmpty(categoryId))
+                queryParams["categoryId"] = categoryId;
 
             var elementclsList = await _apiService.GetAsync<ApiResponse<List<Elementcls>>>("Backoffice/ElementGet", queryParams);
             if (elementclsList != null)
@@ -235,43 +238,43 @@ namespace AniBoard_Admin.Controllers
                 }
             }
             string paginationHtml = "";
-            int iTotal = 0;
+            
+            int totalCount = 0;
+            int rowsPerpage = Convert.ToInt32(_config["Recordsperpage"]);
             if (elementcls.Count>0)
             {
-                //PaginationHtml start
-                int rowsPerpage = Convert.ToInt32(_config["Recordsperpage"]);
-                int totalCount = (int)elementcls.FirstOrDefault().TotalCount;
-                int iPageno = 0;
-                iTotal = (int)Math.Ceiling((decimal)totalCount / rowsPerpage);
-                
-                if (totalCount > rowsPerpage)
-                {
-                    while (iTotal > iPageno)
-                    {
-                        iPageno++;
-                        if (iPageno == 1)
-                        {
-                            paginationHtml = "<li class='page-item active' id='page_1'><a class='page-link' href='javascript:void(0);' onclick='javascript:gotopage(1);'>" + iPageno + "</a></li>";
-                        }
-                        else
-                        {
-                            paginationHtml = paginationHtml + "<li class='page-item' id='page_" + iPageno + "'><a class='page-link' href='javascript:void(0);' onclick='javascript:gotopage(" + iPageno + ");'>" + iPageno + "</a></li>";
-                        }
-                    }
-                }
-                //end
+                totalCount = (int)elementcls.FirstOrDefault().TotalCount;
             }
-            dyElement.paginationHtml = paginationHtml;
-            dyElement.totalCount = iTotal;
+
+            List<ElementCategory> elementCategoriesList = new List<ElementCategory>();
+            var elementCategory = await _apiService.GetAsync<ApiResponse<List<ElementCategory>>>("Backoffice/ElementCategoryGet");
+            if (elementCategory != null)
+            {
+                if (elementCategory.Data.Count > 0)
+                {
+                    elementCategoriesList = elementCategory.Data.ToList();
+                }
+            }
+
+            dyElement.elementCategoriesList = elementCategoriesList;
+            dyElement.totalCount = totalCount;
+            dyElement.rowsPerpage = rowsPerpage;
             dyElement.elementcls = elementcls;
             dyElement.q = q;
+            dyElement.categoryId = 0;
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                dyElement.categoryId =Convert.ToInt32(categoryId);
+            }
+            
+                
             return View(dyElement);
         }
-        public IActionResult ShowElementlist(string q = null, string pageNo = "1")
+        public IActionResult ShowElementlist(string q = null, string catId = null, string pageNo = "1")
         {
             try
             {
-                return ViewComponent("ElementList", new { q = q, pageNo = pageNo });
+                return ViewComponent("ElementList", new { q = q, categoryId=catId, pageNo = pageNo });
             }
             catch (Exception err)
             {
@@ -291,8 +294,9 @@ namespace AniBoard_Admin.Controllers
                 return Redirect("/error/");
             }
         }
+
         [HttpPost()]
-        public async Task<IActionResult> SaveElement(IFormFile file, int elementId, string elementName, int categoryId, int isDelete = 0)
+        public async Task<IActionResult> SaveElement(IFormFile file, int elementId, string elementName, int categoryId, string imageTag = null, int isDelete = 0)
         {
             try
             {
@@ -343,17 +347,34 @@ namespace AniBoard_Admin.Controllers
                         }
                         else
                         {
+                            //using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
+                            //{
+                            //    width = image.Width;
+                            //    height = image.Height;
+
+                            //    using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
+                            //    {
+                            //        await thumbImage.SaveAsync(thumbFilePath);
+                            //    }
+                            //}
                             using (var image = await SixLabors.ImageSharp.Image.LoadAsync(filePath))
                             {
                                 width = image.Width;
                                 height = image.Height;
 
-                                using (var thumbImage = image.Clone(ctx => ctx.Resize(new Size(50, 50))))
+                                var options = new ResizeOptions
+                                {
+                                    Mode = ResizeMode.Max,       // proportional fit
+                                    Size = new Size(150, 150),   // max box
+                                    Sampler = KnownResamplers.Lanczos3, // good quality
+                                    Compand = true               // better colors when resizing
+                                };
+
+                                using (var thumbImage = image.Clone(ctx => ctx.Resize(options)))
                                 {
                                     await thumbImage.SaveAsync(thumbFilePath);
                                 }
                             }
-
                         }
 
                     }
@@ -368,6 +389,7 @@ namespace AniBoard_Admin.Controllers
                 elementcls.CategoryId = categoryId;
                 elementcls.ElementName = elementName;
                 elementcls.ElementId = elementId;
+                elementcls.ImageTag = imageTag;
                 if (isDelete > 0)
                 {
                     elementcls.isDelete = 1;
@@ -402,12 +424,70 @@ namespace AniBoard_Admin.Controllers
                     Errors = err?.Message
                 });
             }
-            
+
 
 
         }
 
 
+
+        public void CreateThumbnails()
+        {
+            string folderPath = _config["DynamicImageFolderPath"] + "/" + _config["ElementFolderName"]; 
+            int maxSize = 150;
+
+
+            //var files = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly)
+            //                     .Where(f => f.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+            //                                 f.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+            //                                 f.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+            //                                 f.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase) ||
+            //                                 f.EndsWith(".gif", StringComparison.OrdinalIgnoreCase));
+            var files = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly)
+                             .Where(f =>
+                                (f.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                 f.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                                 f.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                                 f.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase) ||
+                                 f.EndsWith(".gif", StringComparison.OrdinalIgnoreCase)) &&
+                                !Path.GetFileNameWithoutExtension(f).Contains("_thumb", StringComparison.OrdinalIgnoreCase) // ✅ skip thumbs
+                             );
+
+            foreach (var file in files)
+            {
+                using (var image = SixLabors.ImageSharp.Image.Load(file))
+                {
+                    var options = new ResizeOptions
+                    {
+                        Mode = ResizeMode.Max,       // keep aspect ratio
+                        Size = new Size(maxSize, maxSize),
+                        Sampler = KnownResamplers.Lanczos3,
+                        Compand = true
+                    };
+
+                    using (var thumbImage = image.Clone(ctx => ctx.Resize(options)))
+                    {
+                        string fileNameWithoutExt = Path.GetFileNameWithoutExtension(file);
+                        string extension = Path.GetExtension(file);
+                        string thumbPath = Path.Combine(folderPath, $"{fileNameWithoutExt}_thumb{extension}");
+
+                        if (extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                            extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase))
+                        {
+                            thumbImage.Save(thumbPath, new JpegEncoder { Quality = 85 });
+                        }
+                        else if (extension.Equals(".png", StringComparison.OrdinalIgnoreCase))
+                        {
+                            thumbImage.Save(thumbPath, new PngEncoder { CompressionLevel = PngCompressionLevel.DefaultCompression });
+                        }
+                        else
+                        {
+                            thumbImage.Save(thumbPath); // fallback for bmp/gif
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
 

@@ -1067,10 +1067,22 @@ select::-ms-expand {
 .table-style tr th:last-child {width:100px; text-align:center;}
 .table-style tr td:last-child { width: 100px; text-align: center;}
 .table-style tr td:last-child a {margin:5px;}
-.pagination {position:absolute; bottom:0px; right:14px;}
-
- /*last update-19082025*/
-.pagination .page-item {width:auto; text-align:center; margin-right:6px;}
+.pagination {position:absolute; bottom:0px; right:36px;}
+.page-count-serial {
+    width: 50px;
+    padding: 8px 0px;
+    margin-right: 2px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-left: 15px;
+}
+/*last update-19082025*/
+.pagination .page-item {
+    width: auto;
+    text-align: center;
+    margin-right: 6px;
+}
 .pagination .page-item .page-link {border-radius: 4px;padding: 5px 13px;color:#000;  }
 .pagination .page-item.active .page-link {color: #fff;background: #4c4e9a;border: 1px solid #4c4e9a;}
 .pagination .page-link:focus {box-shadow: none;}
