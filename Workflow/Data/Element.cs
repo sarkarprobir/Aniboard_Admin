@@ -35,6 +35,7 @@ namespace Workflow.Data
         public int? CategoryId { get; set; }
         public string? CategoryName { get; set; }
         public int? CompanyUniqueId { get; set; }
+        public string? ImageTag { get; set; }
     }
     public class ElementCategory
     {

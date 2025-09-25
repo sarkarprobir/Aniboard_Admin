@@ -41,6 +41,17 @@
                 }
                 <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
             </div>
+            <div class="inputWithIcon">
+                @if (!string.IsNullOrEmpty(Model.elementcls.ImageTag))
+                {
+                    <input type="text" placeholder="Image Tag" id="imageTag" name="imageTag" value="@Model.elementcls.ImageTag">
+                }
+                else
+                {
+                    <input type="text" placeholder="Image Tag" id="imageTag" name="imageTag">
+                }
+                <i class="fa fa-file-text fa-lg fa-fw" aria-hidden="true"></i>
+            </div>
             <div>
                 @if (Model.elementId > 0)
                 {
