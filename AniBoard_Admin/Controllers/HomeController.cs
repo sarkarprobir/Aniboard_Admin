@@ -8,6 +8,7 @@ using Workflow.Service.Interface;
 
 namespace AniBoard_Admin.Controllers
 {
+    //[Area("Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -44,6 +45,7 @@ namespace AniBoard_Admin.Controllers
         public IActionResult Logout() 
         {
             _sessionService.RemoveAllSession();
+            //return RedirectToAction("Login", "Home", new { area = "Admin" });
             return RedirectToAction("Login", "Home");
         }
         [HttpPost]
@@ -98,6 +100,7 @@ namespace AniBoard_Admin.Controllers
                         if (adminUser.adminId >0) 
                         {
                             _sessionService.SetUser(adminUser);
+                            //return RedirectToAction("Index", "Home", new { area = "Admin" });
                             return RedirectToAction("Index", "Home");
                         }
                     }

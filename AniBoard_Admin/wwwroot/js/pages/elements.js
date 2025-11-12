@@ -1,14 +1,14 @@
-﻿const CategoryId = document.getElementById("CategoryId");
+﻿const CategoryId_Search = document.getElementById("CategoryId_Search");
 
-CategoryId.addEventListener("change", function () {
+CategoryId_Search.addEventListener("change", function () {
     var searchText = $('#element_search').val();
-    var catId = $('#CategoryId').val();
+    var catId = $('#CategoryId_Search').val();
     window.location.href = '../Element/Elements?categoryId=' + catId + '&q=' + searchText;
 });
 
 function searchelement() {
     var searchText = $('#element_search').val();
-    var catId = $('#CategoryId').val();
+    var catId = $('#CategoryId_Search').val();
     //if (searchText != null && searchText != '') {
         window.location.href = '../Element/Elements?categoryId='+ catId +'&q=' + searchText;
     //}

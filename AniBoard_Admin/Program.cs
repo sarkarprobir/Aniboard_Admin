@@ -36,13 +36,19 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseSession();
-
+//User for Server only
+app.UsePathBase("/admin");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+//app.MapAreaControllerRoute(
+//    name: "admin_area",
+//    areaName: "Admin",
+//    pattern: "admin/{controller=Home}/{action=Login}/{id?}"
+//);
 
 app.MapControllerRoute(
     name: "default",
