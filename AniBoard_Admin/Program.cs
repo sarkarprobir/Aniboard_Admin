@@ -49,7 +49,7 @@ app.UseAuthorization();
 //    areaName: "Admin",
 //    pattern: "admin/{controller=Home}/{action=Login}/{id?}"
 //);
-
+//test
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}/{id?}");
