@@ -81,7 +81,7 @@ if (pageno > maxPageno) {
 function deleteelement(elementId) {
     if (confirm("Are you sure you want to delete this element?")) {
         var searchText = $('#element_search').val();
-        var catId = $('#CategoryId').val();
+        var catId = $('#CategoryId_Search').val();
         const formData = new FormData();
         formData.append("elementId", elementId);
         formData.append("isDelete", 1);
