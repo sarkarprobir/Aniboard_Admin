@@ -9,7 +9,7 @@ namespace Workflow.Helper
     public class Settings
     {
         //public static string apiBaseurl = "https://localhost:44340/api/";
-        public static string apiBaseurl = "https://aniboard.com/api/api/";
-        //public static string apiBaseurl = "http://10.0.0.33:5001/api/";
+        //public static string apiBaseurl = "https://aniboard.com/api/api/";
+        public static string apiBaseurl = "http://10.0.0.33:5001/api/";
     }
 }
