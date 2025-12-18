@@ -258,16 +258,28 @@ namespace AniBoard_Admin.Controllers
 
             dyElement.elementCategoriesList = elementCategoriesList;
             dyElement.totalCount = totalCount;
-            dyElement.rowsPerpage = rowsPerpage;
+            //dyElement.rowsPerpage = rowsPerpage;
             dyElement.elementcls = elementcls;
             dyElement.q = q;
-            dyElement.categoryId = 0;
-            if (!string.IsNullOrEmpty(categoryId))
+            //dyElement.categoryId = 0;
+            //if (!string.IsNullOrEmpty(categoryId))
+            //{
+            //    dyElement.categoryId = Convert.ToInt32(categoryId);
+            //}
+            if (int.TryParse(_config["Recordsperpage"], out int parsedRows))
             {
-                dyElement.categoryId =Convert.ToInt32(categoryId);
+                rowsPerpage = parsedRows;
             }
-            
-                
+
+            int parsedCategoryId = 0;
+            if (!string.IsNullOrWhiteSpace(categoryId) && int.TryParse(categoryId, out int cid))
+            {
+                parsedCategoryId = cid;
+            }
+
+            dyElement.rowsPerpage = rowsPerpage;
+            dyElement.categoryId = parsedCategoryId;
+
             return View(dyElement);
         }
         public IActionResult ShowElementlist(string q = null, string catId = null, string pageNo = "1")
