@@ -12,6 +12,6 @@ namespace Workflow.Helper
         //public static string apiBaseurl = "https://aniboards.com/api/api/";
         //public static string apiBaseurl = "http://10.0.0.33:5001/api/";
         //public static string apiBaseurl = "http://10.0.0.37/api/api/";
-        public static string apiBaseurl = "http://181.215.243.152/api/api/";
+        public static string apiBaseurl = "https://s.aniboard.com/api/api/";
     }
 }
